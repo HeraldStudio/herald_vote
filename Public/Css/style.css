@@ -5,3 +5,18 @@
 /*content*/
 .right-content{
 }
+
+/*create vote form*/
+.vote-create{
+	width: auto;
+}
+#next-step,#submit-vote{
+	/*float: right;*/
+}
+#VoteItem{
+	/*display: none;*/
+}
+.vote-create-form{
+	width: 60%;
+	overflow: hidden;
+}
