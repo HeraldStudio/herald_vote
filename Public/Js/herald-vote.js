@@ -19,10 +19,18 @@ jQuery(document).ready(function($) {
 	});
 
 	$('#vote_type1').click(function(){
-    alert('ss');
+    $('#vote_limit_number_div').remove();
 	});
 
 	$('#vote_type2').click(function(){
-    alert('ss');
+		var divnum = $('#vote_limit_number_div');
+		if(!divnum.length){
+			var addHtml = '<div class="form-group" id="vote_limit_number_div"><br><label for="vote-topic">限投票数:</label><input type="text" name="vote_limit_number" class="form-control" placeholder="限投票数"></div>';
+			$('#vote_num_more').append(addHtml);
+		}
+	});
+
+	$('.vote-item-more-info').click(function() {
+		alert('ss');
 	});
 });

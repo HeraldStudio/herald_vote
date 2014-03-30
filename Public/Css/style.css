@@ -13,10 +13,27 @@
 #next-step,#submit-vote{
 	/*float: right;*/
 }
+.next-page,.submit-vote{
+	float: right;
+	bottom:10px;
+}
+.prev-page{
+	float: left;
+	bottom: 10px;
+}
 #VoteItem{
 	/*display: none;*/
 }
 .vote-create-form{
-	width: 60%;
-	overflow: hidden;
+	width: 80%;
+	/*overflow: hidden;*/
+}
+.info-item{
+	height: 600px;
+	padding: 20px;
+	overflow:auto;
+	/*width: 600px;*/
+}
+.controll{
+	clear: none;
 }

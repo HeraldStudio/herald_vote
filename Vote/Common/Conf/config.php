@@ -19,4 +19,6 @@ return array(
   'LAYOUT_ON' => true,
 
   'SHOW_PAGE_TRACE' => true,
+
+  'DEFAULT_FILTER'  => 'strip_tags,htmlspecialchars'
 );

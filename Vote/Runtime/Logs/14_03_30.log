@@ -1,0 +1,45 @@
+[ 2014-03-30T13:27:38+08:00 ] 127.0.0.1 //herald_vote/index.php/Admin/Admin/createVote.html
+ERR: 无法加载控制器:Admin
+
+[ 2014-03-30T13:28:24+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: 非法操作:createVote
+
+[ 2014-03-30T13:28:41+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Controller:ispost方法不存在！
+
+[ 2014-03-30T13:28:42+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Controller:ispost方法不存在！
+
+[ 2014-03-30T13:28:43+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Controller:ispost方法不存在！
+
+[ 2014-03-30T13:28:43+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Controller:ispost方法不存在！
+
+[ 2014-03-30T13:28:50+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Controller:isPost方法不存在！
+
+[ 2014-03-30T13:28:51+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Controller:isPost方法不存在！
+
+[ 2014-03-30T13:28:51+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Controller:isPost方法不存在！
+
+[ 2014-03-30T16:21:58+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Model:createVote方法不存在！
+
+[ 2014-03-30T16:23:10+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Model:createVote方法不存在！
+
+[ 2014-03-30T16:27:45+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Model:createVote方法不存在！
+
+[ 2014-03-30T16:30:27+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Model:createVote方法不存在！
+
+[ 2014-03-30T16:31:04+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Model:createVote方法不存在！
+
+[ 2014-03-30T16:31:10+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin/Index/createVote.html
+ERR: Think\Model:createVote方法不存在！
+
