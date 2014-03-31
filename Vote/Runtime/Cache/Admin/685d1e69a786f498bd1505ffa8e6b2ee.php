@@ -114,7 +114,7 @@
 		  	<div id="create">
 		  		<h1>发布投票</h1>
 		  		<div class="vote-create">
-		  			<form role="form" class="vote-create-form" enctype="multipart/form-data" action="<?php echo U('Admin/Index/createVote');?>" method="post">
+		  			<form role="form" class="vote-create-form" action="<?php echo U('Admin/Index/createVote');?>" method="post">
 		  				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
 							  <div class="carousel-inner">
 							    <div class="item active">
@@ -128,13 +128,9 @@
 										    <label for="vote-description">详细描述:</label>
 										    <textarea name="description" id="vote-description" class="form-control" placeholder="详细描述" rows="3"></textarea>
 										  </div>
-										  <div class="form-group">
-										    <label for="vote-post">添加海报</label>
-										    <input type="file" id="vote-post" name="vote_post">
-										  </div>
 										  <label for="vote-topic">截止日期:</label>
 											<div class="input-group date">
-			  								<input type="text" class="form-control" name="expried_time"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+			  								<input type="text" class="form-control" name="expired_time"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 											</div><br>
 											<label for="vote-topic">可投选项:</label>
 											<div class="radio">
@@ -158,19 +154,19 @@
 							    		<div id="vote-item">
 										  	<div class="form-group">
 											    <label for="vote-topic">选项1:</label>
-											    <input type="text" name="vote_item_1" class="form-control" id="1" placeholder="选项1">
+											    <input type="text" name="vote_item[]" class="form-control" id="1" placeholder="选项1">
 											  </div>
 											  <div class="form-group">
 											    <label for="vote-topic">选项2:</label>
-											    <input type="text" name="vote_item_2" class="form-control" id="2" placeholder="选项2">
+											    <input type="text" name="vote_item[]" class="form-control" id="2" placeholder="选项2">
 											  </div>
 											  <div class="form-group">
 											    <label for="vote-topic">选项3:</label>
-											    <input type="text" name="vote_item_3" class="form-control" id="3" placeholder="选项3">
+											    <input type="text" name="vote_item[]" class="form-control" id="3" placeholder="选项3">
 											  </div>
 											  <div class="form-group">
 											    <label for="vote-topic">选项4:</label>
-											    <input type="text" name="vote_item_4" class="form-control" id="4" placeholder="选项4">
+											    <input type="text" name="vote_item[]" class="form-control" id="4" placeholder="选项4">
 											  </div>
 										  </div>
 										  <a href="javascript:void(0);" id="addmoreitem"><span class="glyphicon glyphicon-plus"></span>增加更多选项</a><br><br>

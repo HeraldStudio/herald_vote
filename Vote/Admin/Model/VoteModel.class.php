@@ -11,9 +11,9 @@ class VoteModel extends Model{
 
 	);
 
-	protected $_auto = array(
-		array('create_time','time',3,'fucntion'),
-	);
+	// protected $_auto = array(
+	// 	array('create_time','time',1,'fucntion'),
+	// );
 
 	public function createVote(){
 		// $currentuser = currentUser();
@@ -28,10 +28,20 @@ class VoteModel extends Model{
 				$data['type'] = I('post.vote_type');
 				$data['limit'] = I('post.vote_limit_number');
 			}
+
+			$data['create_time'] = date('Y-m-d');
+			//echo $time = I('post.expired_time');
+			$data['expired_time'] = I('post.expired_time');//date('Y-m-d',strtotime($time));
+			if(!$this -> create()){
+				exit($this->getError());
+			}else{
+				$vote_id = $this -> add($data);
+				if($vote_id){
+					$VoteItem = D('VoteItem');
+					$VoteItem -> createItem($vote_id);
+				}
+			}
 			
-			$date['image'] = $info['savename'];
-			$data['expried_time'] = I('post.expried_time');
-			print_r($data);
 		// }else{
 		// 	echo '未登录!';
 		// }

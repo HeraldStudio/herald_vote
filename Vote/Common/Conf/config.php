@@ -13,7 +13,6 @@ return array(
   'DB_USER' => 'root',
   'DB_PWD' => '123456',
   'DB_PORT' => 3306,
-  'DB_PREFIX' => 'vote_',
 
   //Layout config
   'LAYOUT_ON' => true,

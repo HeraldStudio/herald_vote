@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
 		
 		for(var i = 1; i < 5; i++){
 			var addId = Number(lastid)+Number(i);
-			var addHtml = '<div class="form-group"><label for="vote-topic">选项'+addId+':</label><input type="text" name="vote_item_'+addId+'" class="form-control" id="'+addId+'" placeholder="选项'+addId+'"></div>';
+			var addHtml = '<div class="form-group"><label for="vote-topic">选项'+addId+':</label><input type="text" name="vote_item[]" class="form-control" id="'+addId+'" placeholder="选项'+addId+'"></div>';
 			$('#vote-item').append(addHtml);
 			if(addId == 20){
 				$('#addmoreitem').css({
