@@ -70,14 +70,5 @@ $(document).ready(function(){
   			$('#vote_info_tr_'+delid).hide("slow");
   		},
   	})
-  	.done(function() {
-  		console.log("success");
-  	})
-  	.fail(function() {
-  		console.log("error");
-  	})
-  	.always(function() {
-  		console.log("complete");
-  	});
   });
 });

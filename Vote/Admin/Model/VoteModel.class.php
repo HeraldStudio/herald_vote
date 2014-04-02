@@ -63,7 +63,6 @@ class VoteModel extends Model{
 				$uservotes[$key]['state'] = "已结束";
 			}
 		}
-		//print_r($uservotes);
 		return $uservotes;
 	}
 }

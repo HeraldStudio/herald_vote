@@ -12,7 +12,7 @@ body{
 }
 .vote-topic{
 	color: #3c763d;
-	margin-left: 40px;
+	/*margin-left: 40px;*/
 	/*margin-bottom: 50px;*/
 }
 .vote-description{
@@ -32,7 +32,7 @@ body{
 	text-align: right;
 }
 .vote-description-block{
-	margin-left: 50px;
+	/*margin-left: 50px;*/
 	margin-top: 20px;
 	background-color: #f4f8fa;
 	border-color: #5bc0de;

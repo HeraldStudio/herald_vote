@@ -35,88 +35,77 @@
 	<div class="row">
 	  <div class="col-md-8">
 	  	<div class="vote-info-item">
-				<h2 class="vote-topic"><span class="glyphicon glyphicon-stats"></span>&nbsp;测试测试</h2>
+				<h2 class="vote-topic"><span class="glyphicon glyphicon-stats"></span>&nbsp;<?php echo ($voteinfo["topic"]); ?></h2>
 		  	<blockquote class="vote-description-block">
-		  		<p class="vote-description">试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
+		  		<p class="vote-description"><?php echo ($voteinfo["description"]); ?></p>
 		  		<div class="vote-owner">
 		  			<span class="glyphicon glyphicon-user"></span>&nbsp;测试测
-		  			<span class="glyphicon glyphicon-time"></span>&nbsp;2014-03-10
+		  			<span class="glyphicon glyphicon-time"></span>&nbsp;<?php echo ($voteinfo["expired_time"]); ?>&nbsp;
+		  			<?php if($voteinfo.state): ?><span class="label label-success">正在进行</span>
+		  			<?php else: ?>
+		  				<span class="label label-danger">已结束</span><?php endif; ?>
 		  		</div>
 		  	</blockquote>
 			</div>
 			<br>
 			<br>
-	  	<div class="row">
-			  <div class="col-md-2 vote-item-name">测试</div>
-			  <div class="col-md-9">
-			  	<div class="progress">
-					  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-					    60%
+			<?php switch($voteinfo["displaytype"]): case "text": ?><input type="hidden" id="vote_id" value="<?php echo ($voteinfo["id"]); ?>">
+					<div id="remes"></div>
+					<?php if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="row">
+						  <div class="col-md-2 vote-item-name"><?php echo ($vi["name"]); ?></div>
+						  <div class="col-md-9">
+						  	<div class="progress">
+								  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+								    60%
+								  </div>
+								</div>
+						  </div>
+						  <div class="col-md-1">
+						  	<div>
+								  <label>
+								  	<?php if($voteinfo["limit"] == 1): ?><input type="radio" name="userselect" value="<?php echo ($vi["id"]); ?>">
+								  	<?php else: ?>
+								  		<input type="checkbox" name="userselect" value="<?php echo ($vi["id"]); ?>"><?php endif; ?>
+								  </label>
+								</div>
+						  </div>
+						</div><?php endforeach; endif; else: echo "" ;endif; ?>
+					<br>
+					<br>
+					<button type="button" class="btn btn-success vote-btn" id="submit_vote">投票</button><?php break;?>
+				<?php case "picture": ?><div class="row">
+					  <div class="col-sm-6 col-md-4">
+					    <div class="thumbnail">
+					      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" alt="...">
+					      <div class="caption">
+					        <h3>测试测试</h3>
+					        <p>测试测试测试测试</p>
+					        <p><a href="javascript:void(0);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;顶起</a> <a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;踩踩</a></p>
+					      </div>
+					    </div>
 					  </div>
-					</div>
-			  </div>
-			  <div class="col-md-1">
-			  	<div>
-					  <label>
-					    <input type="checkbox" value="">
-					  </label>
-					</div>
-			  </div>
-			</div>
-			<div class="row">
-			  <div class="col-md-2 vote-item-name">测试</div>
-			  <div class="col-md-9">
-			  	<div class="progress">
-					  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-					    60%
+					  <div class="col-sm-6 col-md-4">
+					    <div class="thumbnail">
+					      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" alt="...">
+					      <div class="caption">
+					        <h3>测试测试</h3>
+					        <p>测试测试测试测试</p>
+					        <p><a href="javascript:void(0);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;顶起</a> <a href="javascript:void(0);" class="btn btn-default" role="button"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;踩踩</a></p>
+					      </div>
+					    </div>
 					  </div>
-					</div>
-			  </div>
-			  <div class="col-md-1">
-			  	<div>
-					  <label>
-					    <input type="checkbox" value="">
-					  </label>
-					</div>
-			  </div>
-			</div>
-			<div class="row">
-			  <div class="col-md-2 vote-item-name">测试</div>
-			  <div class="col-md-9">
-			  	<div class="progress">
-					  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-					    60%
+					  <div class="col-sm-6 col-md-4">
+					    <div class="thumbnail">
+					      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" alt="...">
+					      <div class="caption">
+					        <h3>测试测试</h3>
+					        <p>测试测试测试测试</p>
+					        <p><a href="javascript:void(0);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;顶起</a> <a href="javascript:void(0);" class="btn btn-default" role="button"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;踩踩</a></p>
+					      </div>
+					    </div>
 					  </div>
-					</div>
-			  </div>
-			  <div class="col-md-1">
-			  	<div>
-					  <label>
-					    <input type="checkbox" value="">
-					  </label>
-					</div>
-			  </div>
-			</div>
-			<div class="row">
-			  <div class="col-md-2 vote-item-name">测试</div>
-			  <div class="col-md-9">
-			  	<div class="progress">
-					  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-					    60%
-					  </div>
-					</div>
-			  </div>
-			  <div class="col-md-1">
-			  	<div>
-					  <label>
-					    <input type="checkbox" value="">
-					  </label>
-					</div>
-			  </div>
-			</div>
-			<br>
-			<br>
-			<button type="button" class="btn btn-success vote-btn">投票</button>
+					</div><?php break; endswitch;?>
+
 	  </div>
 	  <div class="col-md-3">
 	  	<br>
@@ -145,6 +134,6 @@
 
 <script type="text/javascript" src="/herald_vote/Public/Js/jquery.js"></script>
 <script type="text/javascript" src="/herald_vote/Public/Js/bootstrap.js"></script>
-<script type="text/javascript" src="/herald_vote/Public/Js/herald-vote.js"></script>
+<script type="text/javascript" src="/herald_vote/Public/Js/herald-vote-home.js"></script>
 </body>
 </html>

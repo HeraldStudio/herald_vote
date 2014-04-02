@@ -16,4 +16,12 @@ class IndexController extends Controller {
   	}
   	$this -> display();
   }
+  public function vote(){
+  	if(IS_POST){
+  		$VoteAction = D('VoteAction');
+  		echo $VoteAction -> vote();
+  	}else{
+  		$this -> error('502 Bad request!');
+  	}
+  }
 }
