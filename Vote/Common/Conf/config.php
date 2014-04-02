@@ -17,7 +17,8 @@ return array(
   //Layout config
   'LAYOUT_ON' => true,
 
-  'SHOW_PAGE_TRACE' => true,
+  //'SHOW_PAGE_TRACE' => true,
+  'LOG_RECORD' => true, // 开启日志记录
 
   'DEFAULT_FILTER'  => 'strip_tags,htmlspecialchars'
 );

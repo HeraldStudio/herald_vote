@@ -28,10 +28,9 @@ class VoteModel extends Model{
 				$data['type'] = I('post.vote_type');
 				$data['limit'] = I('post.vote_limit_number');
 			}
-
+			$data['image'] = I('post.vote_image');
 			$data['create_time'] = date('Y-m-d');
-			//echo $time = I('post.expired_time');
-			$data['expired_time'] = I('post.expired_time');//date('Y-m-d',strtotime($time));
+			$data['expired_time'] = I('post.expired_time');
 			if(!$this -> create()){
 				exit($this->getError());
 			}else{
@@ -45,5 +44,26 @@ class VoteModel extends Model{
 		// }else{
 		// 	echo '未登录!';
 		// }
+	}
+
+	public function deleteVote(){
+		$voteid = I('post.vote_id');
+		$this->where('id='.$voteid)->limit('1')->delete();
+		$VoteItem = D('VoteItem');
+		$VoteItem -> deleteItem($voteid);
+	}
+
+	public function getVoteByUserId(){
+		$userid = I('get.userid');
+		$uservotes = $this -> where('user_id='.$userid) -> order('create_time') -> select();
+		foreach($uservotes as $key => $uservote){
+			if(strtotime($uservote['expired_time']) >= strtotime(date("Y-m-d",time()))){
+				$uservotes[$key]['state'] = "正在进行";
+			}else{
+				$uservotes[$key]['state'] = "已结束";
+			}
+		}
+		//print_r($uservotes);
+		return $uservotes;
 	}
 }

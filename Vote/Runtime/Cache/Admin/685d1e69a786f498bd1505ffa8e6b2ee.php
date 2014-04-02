@@ -6,7 +6,7 @@
 	<title>先声投票</title>
 	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/datepicker.css" />
-	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/style-admin.css" />
 </head>
 <body>
 	<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
@@ -48,7 +48,6 @@
 		  		<table class="table">
 	          <thead>
 	            <tr>
-	              <th>#</th>
 	              <th>First Name</th>
 	              <th>Last Name</th>
 	              <th>Username</th>
@@ -56,19 +55,16 @@
 	          </thead>
 	          <tbody>
 	            <tr>
-	              <td>1</td>
 	              <td>Mark</td>
 	              <td>Otto</td>
 	              <td>@mdo</td>
 	            </tr>
 	            <tr>
-	              <td>2</td>
 	              <td>Jacob</td>
 	              <td>Thornton</td>
 	              <td>@fat</td>
 	            </tr>
 	            <tr>
-	              <td>3</td>
 	              <td>Larry</td>
 	              <td>the Bird</td>
 	              <td>@twitter</td>
@@ -82,31 +78,19 @@
 		  		<table class="table">
 	          <thead>
 	            <tr>
-	              <th>#</th>
-	              <th>First Name</th>
-	              <th>Last Name</th>
-	              <th>Username</th>
+	              <th>投票主题</th>
+	              <th>限投票数</th>
+	              <th>状态</th>
+	              <th>操作</th>
 	            </tr>
 	          </thead>
 	          <tbody>
-	            <tr>
-	              <td>1</td>
-	              <td>Mark</td>
-	              <td>Otto</td>
-	              <td>@mdo</td>
-	            </tr>
-	            <tr>
-	              <td>2</td>
-	              <td>Jacob</td>
-	              <td>Thornton</td>
-	              <td>@fat</td>
-	            </tr>
-	            <tr>
-	              <td>3</td>
-	              <td>Larry</td>
-	              <td>the Bird</td>
-	              <td>@twitter</td>
-	            </tr>
+	          	<?php if(is_array($uservote)): $k = 0; $__LIST__ = $uservote;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($k % 2 );++$k;?><tr id="vote_info_tr_<?php echo ($vo["id"]); ?>">
+		              <td><?php echo ($vo["topic"]); ?></td>
+		              <td><?php echo ($vo["limit"]); ?></td>
+		              <td><?php echo ($vo["state"]); ?></td>
+		              <td><button class="btn btn-danger delete_vote" id="<?php echo ($vo["id"]); ?>">删除</button></td>
+		            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 	          </tbody>
 	        </table>
 		  	</div>
@@ -131,7 +115,12 @@
 										  <label for="vote-topic">截止日期:</label>
 											<div class="input-group date">
 			  								<input type="text" class="form-control" name="expired_time"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-											</div><br>
+											</div>
+											<br>
+											<button type="button" class="btn btn-info" id="vote_post_name" tabindex="-1" data-toggle="modal" data-target="#model_upload">上传海报</button>
+											<input type="hidden" id="vote_item_attach_0" name="vote_image">
+											<br>
+											<br>
 											<label for="vote-topic">可投选项:</label>
 											<div class="radio">
 											  <label>
@@ -152,21 +141,33 @@
 							    	<div class="info-item">
 							    		<h3>选项信息</h3>
 							    		<div id="vote-item">
-										  	<div class="form-group">
-											    <label for="vote-topic">选项1:</label>
-											    <input type="text" name="vote_item[]" class="form-control" id="1" placeholder="选项1">
+										  	<div class="input-group">
+											    <input type="text" name="vote_item_name[1]" class="form-control" id="1" placeholder="选项1">
+											  	<input type="hidden" name="vote_item_attach[1]" id="vote_item_attach_1">
+											  	<div class="input-group-btn">
+												    <button type="button" class="btn btn-default uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload">添加附件</button>
+												  </div>
 											  </div>
-											  <div class="form-group">
-											    <label for="vote-topic">选项2:</label>
-											    <input type="text" name="vote_item[]" class="form-control" id="2" placeholder="选项2">
+											  <div class="input-group">
+											    <input type="text" name="vote_item_name[2]" class="form-control" id="2" placeholder="选项2">
+											  	<input type="hidden" name="vote_item_attach[2]" id="vote_item_attach_2">
+											  	<div class="input-group-btn">
+												    <button type="button" class="btn btn-default uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload">添加附件</button>
+												  </div>
 											  </div>
-											  <div class="form-group">
-											    <label for="vote-topic">选项3:</label>
-											    <input type="text" name="vote_item[]" class="form-control" id="3" placeholder="选项3">
+											  <div class="input-group">
+											    <input type="text" name="vote_item_name[3]" class="form-control" id="3" placeholder="选项3">
+											  	<input type="hidden" name="vote_item_attach[3]" id="vote_item_attach_3">
+											  	<div class="input-group-btn">
+												    <button type="button" class="btn btn-default uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload">添加附件</button>
+												  </div>
 											  </div>
-											  <div class="form-group">
-											    <label for="vote-topic">选项4:</label>
-											    <input type="text" name="vote_item[]" class="form-control" id="4" placeholder="选项4">
+											  <div class="input-group">
+											    <input type="text" name="vote_item_name[4]" class="form-control" id="4" placeholder="选项4">
+											  	<input type="hidden" name="vote_item_attach[4]" id="vote_item_attach_4">
+											  	<div class="input-group-btn">
+												    <button type="button" class="btn btn-default uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload">添加附件</button>
+												  </div>
 											  </div>
 										  </div>
 										  <a href="javascript:void(0);" id="addmoreitem"><span class="glyphicon glyphicon-plus"></span>增加更多选项</a><br><br>
@@ -177,6 +178,20 @@
 							  </div>
 							</div>
 						</form>
+						<div class="modal fade" id="model_upload" tabindex="-1" role="dialog" aria-labelledby="UploadsModel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						        <h4 class="modal-title" id="myModalLabel">上传附件</h4>
+						      </div>
+						      <div class="modal-body">
+						      	<div id="votepostuploader">上传附件</div>
+						      	<input type="hidden" id="uploadid">
+						      </div>
+						    </div>
+						  </div>
+						</div>
 		  		</div>
 		  	</div>
 		  </div>
@@ -193,8 +208,11 @@
 </footer>
 
 <script type="text/javascript" src="/herald_vote/Public/Js/jquery.js"></script>
-<script type="text/javascript" src="/herald_vote/Public/Js/bootstrap.js"></script>
 <script type="text/javascript" src="/herald_vote/Public/Js/datepicker.js"></script>
+<script type="text/javascript" src="/herald_vote/Public/Js/fileupload.js"></script>
+<script type="text/javascript" src="/herald_vote/Public/Js/bootstrap.js"></script>
+
+
 <script type="text/javascript" src="/herald_vote/Public/Js/herald-vote.js"></script>
 </body>
 </html>
