@@ -50,25 +50,28 @@
 			<br>
 			<br>
 			<?php switch($voteinfo["displaytype"]): case "text": ?><input type="hidden" id="vote_id" value="<?php echo ($voteinfo["id"]); ?>">
+					<input type="hidden" id="vote_limit" value="<?php echo ($voteinfo["limit"]); ?>">
 					<div id="remes"></div>
 					<?php if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="row">
 						  <div class="col-md-2 vote-item-name"><?php echo ($vi["name"]); ?></div>
-						  <div class="col-md-9">
+						  <div class="col-md-8">
 						  	<div class="progress">
-								  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-								    60%
+								  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo ($vi["resultcount"]); ?>%;">
+								    <?php echo ($vi["resultcount"]); ?>%
 								  </div>
 								</div>
 						  </div>
-						  <div class="col-md-1">
-						  	<div>
-								  <label>
-								  	<?php if($voteinfo["limit"] == 1): ?><input type="radio" name="userselect" value="<?php echo ($vi["id"]); ?>">
-								  	<?php else: ?>
-								  		<input type="checkbox" name="userselect" value="<?php echo ($vi["id"]); ?>"><?php endif; ?>
-								  </label>
-								</div>
-						  </div>
+						  <div class="col-md-1"><?php echo ($vi["supportnum"]); ?></div>
+						  <?php echo ($voteinfo["canvote"]); ?>
+						  <?php if($voteinfo.canvote): ?><div class="col-md-1">
+							  	<div>
+									  <label>
+									  	<?php if($voteinfo["limit"] == 1): ?><input type="radio" name="userselect" value="<?php echo ($vi["id"]); ?>">
+									  	<?php else: ?>
+									  		<input type="checkbox" name="userselect" value="<?php echo ($vi["id"]); ?>"><?php endif; ?>
+									  </label>
+									</div>
+							  </div><?php endif; ?>
 						</div><?php endforeach; endif; else: echo "" ;endif; ?>
 					<br>
 					<br>

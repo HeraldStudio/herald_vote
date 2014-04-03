@@ -9,14 +9,32 @@ class VoteModel extends Model{
 			$voteinfo['voteitem'] = $this -> getVoteItem($voteinfo['id']);
 			$voteinfo['state'] = $this -> getVoteState($voteinfo['expired_time']);
 			$voteinfo['displaytype'] = $this -> getVoteDisplayType($voteinfo['voteitem']);
+			$voteinfo['joinnum'] = $this -> getJoinNum($voteinfo['id']);
+			$voteinfo['canvote'] = $this -> canuservote($voteinfo['id']);
 			return $voteinfo;
 		}
 		return false;
 	}
 
+	public function getVoteLimitById($voteid){
+		return $this -> where('id='.$voteid) -> getField('limit');
+	}
+
 	private function getVoteItem($voteid){
 		$VoteItem = D('VoteItem');
-		return $VoteItem -> getVoteItemById($voteid);
+		$VoteAction = D('VoteAction');
+		$voteitems = $VoteItem -> getVoteItemById($voteid);
+		foreach ($voteitems as $key => $voteitem) {
+			$resultcount = $VoteAction -> getVoteResult($voteid,$voteitem['id']);
+			$voteitems[$key]['resultcount'] = $resultcount*100;
+			$voteitems[$key]['supportnum'] = $VoteAction -> getItemSupportNum($voteitem['id']);
+		}
+		return $voteitems;
+	}
+
+	private function getJoinNum($voteid){
+		$VoteAction = D('VoteAction');
+		return $VoteAction -> getVoteJoinNum($voteid);
 	}
 
 	private function getVoteState($expiredtime){
@@ -25,6 +43,11 @@ class VoteModel extends Model{
 		}else{
 			return false;
 		}
+	}
+
+	private function canuservote($voteid){
+		$VoteAction = D('VoteAction');
+		echo $VoteAction -> canUserVote('213111517',$voteid);
 	}
 
 	private function getVoteDisplayType($voteitem){
