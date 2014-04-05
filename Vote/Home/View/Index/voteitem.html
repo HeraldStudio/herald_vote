@@ -28,14 +28,13 @@
 						  <div class="col-md-2 vote-item-name">{$vi.name}</div>
 						  <div class="col-md-8">
 						  	<div class="progress">
-								  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {$vi.resultcount}%;">
+								  <div class="progress-bar" id="pro_bar_{$vi.id}" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {$vi.resultcount}%;">
 								    {$vi.resultcount}%
 								  </div>
 								</div>
 						  </div>
-						  <div class="col-md-1">{$vi.supportnum}</div>
-						  {$voteinfo.canvote}
-						  <if condition="$voteinfo.canvote">
+						  <div class="col-md-1" id="support_num_{$vi.id}">{$vi.supportnum}</div>
+						  <if condition="$voteinfo.canvote eq true">
 							  <div class="col-md-1">
 							  	<div>
 									  <label>
@@ -52,7 +51,9 @@
 					</volist>
 					<br>
 					<br>
-					<button type="button" class="btn btn-success vote-btn" id="submit_vote">投票</button>
+					<if condition="$voteinfo.canvote eq true">
+						<button type="button" class="btn btn-success vote-btn" id="submit_vote">投票</button>
+					</if>
 				</case>
 				<case value="picture">
 					<div class="row">

@@ -56,14 +56,13 @@
 						  <div class="col-md-2 vote-item-name"><?php echo ($vi["name"]); ?></div>
 						  <div class="col-md-8">
 						  	<div class="progress">
-								  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo ($vi["resultcount"]); ?>%;">
+								  <div class="progress-bar" id="pro_bar_<?php echo ($vi["id"]); ?>" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo ($vi["resultcount"]); ?>%;">
 								    <?php echo ($vi["resultcount"]); ?>%
 								  </div>
 								</div>
 						  </div>
-						  <div class="col-md-1"><?php echo ($vi["supportnum"]); ?></div>
-						  <?php echo ($voteinfo["canvote"]); ?>
-						  <?php if($voteinfo.canvote): ?><div class="col-md-1">
+						  <div class="col-md-1" id="support_num_<?php echo ($vi["id"]); ?>"><?php echo ($vi["supportnum"]); ?></div>
+						  <?php if($voteinfo["canvote"] == true): ?><div class="col-md-1">
 							  	<div>
 									  <label>
 									  	<?php if($voteinfo["limit"] == 1): ?><input type="radio" name="userselect" value="<?php echo ($vi["id"]); ?>">
@@ -75,7 +74,7 @@
 						</div><?php endforeach; endif; else: echo "" ;endif; ?>
 					<br>
 					<br>
-					<button type="button" class="btn btn-success vote-btn" id="submit_vote">投票</button><?php break;?>
+					<?php if($voteinfo["canvote"] == true): ?><button type="button" class="btn btn-success vote-btn" id="submit_vote">投票</button><?php endif; break;?>
 				<?php case "picture": ?><div class="row">
 					  <div class="col-sm-6 col-md-4">
 					    <div class="thumbnail">

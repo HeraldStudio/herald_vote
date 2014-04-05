@@ -4,59 +4,28 @@ namespace Home\Model;
 use Think\Model;
 
 class VoteActionModel extends Model{
-	// protected $voteinfo;
-	// protected $voteiteminfos;
-	// protected $voteid;
-
-	// private function setValue(){
-	// 	$Vote = D('Vote');
-	// 	$this -> voteid = I('post.vote_id');
-	// 	$this -> voteinfo = $Vote -> getVoteById($this -> voteid);
-	// 	//$this -> uservotenum = $Vote -> getUserVoteNum($this -> voteid);
-	// 	$this -> voteiteminfos = I('post.item_info');
-	// }
 	public function vote(){
-		// $this -> setValue();
-		//$Vote = D('Vote');
 		$voteid = I('post.vote_id');
-		//$voteinfo = $Vote -> getVoteById($voteid);
 		$voteiteminfos = I('post.item_info');
 
-		// if(!$this -> isDataValidity()){
-		// 	return json_encode(array('type'=>'danger', 'content' => '数据错误!'));
-		// }
 		if(!$this -> canvote($voteid, count($voteiteminfos))){
 			return json_encode(array('type'=>'danger', 'content' => '您的总投票数超过了投票设定的数目，无法提交数据，请重新选择!'));
 		}
 		if(!$this -> addData($voteid, $voteiteminfos)){
 			return json_encode(array('type'=>'danger', 'content' => '抱歉，先声服务器貌似除了点问题，我们正在玩命修复中!'));
 		}else{
-			// $remain = $voteinfo['limit'] - $this -> getUserVoteNum();
-			// $last = count($voteiteminfos);
-			// $content = '恭喜，您已经成功的投出了您手中宝贵的'.$last.'票，您还可以再投'.$remain.'票!';
-			return json_encode(array('type'=>'success', 'content' => '投票成功，感谢您的参与！', 'remain' => $remain));
+			$canvote = $this -> canvote($voteid, count($voteiteminfos));
+			$lastresult = $this -> getLastResult($voteid);
+			$lastsupportnum = $this -> getLastSupportNum($voteid);
+			return json_encode(array('type'=>'success', 'content' => '投票成功，感谢您的参与！','canvote' => $canvote, 'lastresult' => $lastresult, 'lastsupportnum' => $lastsupportnum));
 		}
-		// if(!$this -> isVoteInLimit($voteiteminfos,$voteinfo['limit'])){
-		// 	return json_encode(array('type'=>'danger', 'content' => '您的总投票数超过了投票设定的数目，无法提交数据，请重新选择!'));
-		// }
-		// if(!$this -> canUserVote('213111517',$voteid,$voteinfo['limit'])){
-		// 	return json_encode(array('type'=>'danger', 'content' => '您的票数已经投完，谢谢您的参与！'));
-		// }
-		// if(!$this -> addData($voteid, $voteiteminfos)){
-		// 	return json_encode(array('type'=>'danger', 'content' => '抱歉，先声服务器貌似除了点问题，我们正在玩命修复中!'));
-		// }else{
-		// 	$remain = $voteinfo['limit'] - $this -> getUserVoteNum();
-		// 	$last = count($voteiteminfos);
-		// 	$content = '恭喜，您已经成功的投出了您手中宝贵的'.$last.'票，您还可以再投'.$remain.'票!';
-		// 	return json_encode(array('type'=>'success', 'content' => $content, 'remain' => $remain));
-		// }
 	}
 
 	private function canvote($voteid,$votingitmecount){
 		$votedcount = $this -> getVotedCount('213111517',$voteid);
 		$Vote = D('Vote');
 		$limit = $Vote -> getVoteLimitById($voteid);
-		if($votedcount + $votingitmecount >= $limit){
+		if($votedcount + $votingitmecount > $limit){
 			return false;
 		}
 		return true;
@@ -78,6 +47,24 @@ class VoteActionModel extends Model{
 		$votesumcount = $this -> where('vote_id='.$voteid) -> count();
 		$itemsuncount = $this -> where('vote_item_id='.$itemid) -> count();
 		return $itemsuncount/$votesumcount;
+	}
+
+	public function getLastResult($voteid){
+		$VoteItem = D('VoteItem');
+		$iteminfos = $VoteItem -> getVoteItemById($voteid);
+		foreach ($iteminfos as $key => $iteminfo) {
+			$lastarray[$iteminfo['id']] = $this -> getVoteResult($voteid,$iteminfo['id']);
+		}
+		return $lastarray;
+	}
+
+	public function getLastSupportNum($voteid){
+		$VoteItem = D('VoteItem');
+		$iteminfos = $VoteItem -> getVoteItemById($voteid);
+		foreach ($iteminfos as $key => $iteminfo) {
+			$lastarray[$iteminfo['id']] = $this -> getItemSupportNum($iteminfo['id']);
+		}
+		return $lastarray;
 	}
 
 	public function canUserVote($userid,$voteid,$limit){
