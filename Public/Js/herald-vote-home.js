@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) {
 	$('#submit_vote').click(function() {
 	  var voteid = $('#vote_id').val();
+	  var displaytype = $('#vote_diaplay_type').val();
 	  var values = {};
 	  var key = -1;
 	  $('input[name=userselect]:checked').each(function(index,value){
@@ -19,40 +20,70 @@ jQuery(document).ready(function($) {
 	  	$('#remes').append(addhtml);
 	  	return;
 	  }
-	  $.ajax({
-	  	url: '/herald_vote/index.php/Home/Index/vote',
-	  	type: 'post',
-	  	dataType: 'text',
-	  	data: {
-	  		'vote_id': voteid,
-	  		'item_info': values
-	    },
-	    success: function(data){
-      	var result = JSON.parse(data);
-      	var addhtml = '<div class="alert alert-'+result.type+' fade in"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+result.content+'</div>'
-        $('#remes').empty();
-        $('#remes').append(addhtml);
-        if(result.type == 'success' && result.canvote == false){
-        	$('input[name=userselect]').hide('fast');
-        	$('#submit_vote').hide('fast');
-        }
-        if(result.type == 'success'){
-        	$.each(result.lastresult, function (index,value){
-        		$("#pro_bar_"+index).css({
-        			'width': Number(value)*100+'%',
-        		}).html(Number(value)*100+'%');
-        		$('input[name=userselect]:checked').each(function (){
-        			$(this).attr("checked",false);
-        		});
-        	});
-        	$.each(result.lastsupportnum, function (index, val) {
-        		 $("#support_num_"+index).html(val);
-        	});
-        }
-	    },
-	    error: function(data){
-	    	//console.log(data.error());
-	    }
-	  });
+	  ajax(voteid,values,displaytype);
+	});
+	$('.vote-btn-pic').click(function() {
+		var voteid = $('#vote_id').val();
+		var displaytype = $('#vote_diaplay_type').val();
+		var values = {};
+		values[0] = $(this).attr('id');
+		ajax(voteid,values,displaytype);
 	});
 });
+
+function ajax(voteid, values, displaytype){
+	$.ajax({
+  	url: '/herald_vote/index.php/Home/Index/vote',
+  	type: 'post',
+  	dataType: 'text',
+  	data: {
+  		'vote_id': voteid,
+  		'item_info': values
+    },
+    success: function(data){
+    	var result = JSON.parse(data);
+    	var addhtml = '<div class="alert alert-'+result.type+' fade in"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+result.content+'</div>'
+      $('#remes').empty();
+      $('#remes').append(addhtml);
+      if(displaytype == "text"){
+      	textresponse(result);
+      }else{
+				picresponse(result);
+      }
+    },
+  });
+}
+
+function textresponse(result){
+	if(result.type == 'success' && result.canvote == false){
+			$('input[name=userselect]').hide('fast');
+			$('#submit_vote').hide('fast');
+		}
+	if(result.type == 'success'){
+		$.each(result.lastresult, function (index,value){
+			$("#pro_bar_"+index).css({
+				'width': Number(value)*100+'%',
+			}).html(Number(value)*100+'%');
+			$('input[name=userselect]:checked').each(function (){
+				$(this).attr("checked",false);
+			});
+		});
+		$.each(result.lastsupportnum, function (index, val) {
+			 $("#support_num_"+index).html(val);
+		});
+	}
+}
+
+function picresponse(result){
+	if((result.type == 'success' && result.canvote == false)||result.type == 'danger'){
+		$(".vote-btn-pic").attr({
+			"disabled": 'disabled'
+		});
+	}
+	if(result.type == 'success'){
+		$.each(result.lastsupportnum, function (index, val) {
+			 $("#support_num_"+index).html(val);
+		});
+	}
+	console.log(result.canvote);
+}

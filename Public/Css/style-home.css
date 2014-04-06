@@ -28,6 +28,10 @@ body{
 .vote-btn{
 	float: right;
 }
+.vote-btn-pic{
+	margin-right: 40%;
+	/*right: 110px;*/
+}
 .vote-item-name{
 	text-align: right;
 }
@@ -41,4 +45,7 @@ body{
 	font-size: 12px;
 	text-align: right;
 	color: rgb(155, 155, 155);
+}
+.vote-divide{
+	margin: 10px, 0;
 }

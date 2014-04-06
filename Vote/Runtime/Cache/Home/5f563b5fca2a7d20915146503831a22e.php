@@ -49,10 +49,11 @@
 			</div>
 			<br>
 			<br>
-			<?php switch($voteinfo["displaytype"]): case "text": ?><input type="hidden" id="vote_id" value="<?php echo ($voteinfo["id"]); ?>">
-					<input type="hidden" id="vote_limit" value="<?php echo ($voteinfo["limit"]); ?>">
-					<div id="remes"></div>
-					<?php if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="row">
+			<input type="hidden" id="vote_id" value="<?php echo ($voteinfo["id"]); ?>">
+			<input type="hidden" id="vote_limit" value="<?php echo ($voteinfo["limit"]); ?>">
+			<input type="hidden" id="vote_diaplay_type" value="<?php echo ($voteinfo["displaytype"]); ?>">
+			<div id="remes"></div>
+			<?php switch($voteinfo["displaytype"]): case "text": if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="row">
 						  <div class="col-md-2 vote-item-name"><?php echo ($vi["name"]); ?></div>
 						  <div class="col-md-8">
 						  	<div class="progress">
@@ -76,36 +77,29 @@
 					<br>
 					<?php if($voteinfo["canvote"] == true): ?><button type="button" class="btn btn-success vote-btn" id="submit_vote">投票</button><?php endif; break;?>
 				<?php case "picture": ?><div class="row">
-					  <div class="col-sm-6 col-md-4">
-					    <div class="thumbnail">
-					      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" alt="...">
-					      <div class="caption">
-					        <h3>测试测试</h3>
-					        <p>测试测试测试测试</p>
-					        <p><a href="javascript:void(0);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;顶起</a> <a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;踩踩</a></p>
-					      </div>
-					    </div>
-					  </div>
-					  <div class="col-sm-6 col-md-4">
-					    <div class="thumbnail">
-					      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" alt="...">
-					      <div class="caption">
-					        <h3>测试测试</h3>
-					        <p>测试测试测试测试</p>
-					        <p><a href="javascript:void(0);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;顶起</a> <a href="javascript:void(0);" class="btn btn-default" role="button"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;踩踩</a></p>
-					      </div>
-					    </div>
-					  </div>
-					  <div class="col-sm-6 col-md-4">
-					    <div class="thumbnail">
-					      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" alt="...">
-					      <div class="caption">
-					        <h3>测试测试</h3>
-					        <p>测试测试测试测试</p>
-					        <p><a href="javascript:void(0);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;顶起</a> <a href="javascript:void(0);" class="btn btn-default" role="button"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;踩踩</a></p>
-					      </div>
-					    </div>
-					  </div>
+						<?php if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="col-sm-6 col-md-4">
+						    <div class="thumbnail">
+						      <img src="/herald_vote/Uploads/<?php echo ($vi["attachment"]); ?>" alt="...">
+						      <div class="caption">
+						        <h3><?php echo ($vi["name"]); ?></h3>
+						        <p><?php echo ($vi["description"]); ?></p>
+						        <hr class="vote-divide">
+						        <p>
+						        	<?php if($voteinfo["canvote"] == true): ?><a href="javascript:void(0);" class="btn btn-primary vote-btn-pic" role="button" id="<?php echo ($vi["id"]); ?>">
+							        		<span class="glyphicon glyphicon-thumbs-up"></span>
+							        		&nbsp;顶起
+							        	</a>
+							        <?php else: ?>
+							        	<a href="javascript:void(0);" class="btn btn-primary vote-btn-pic" role="button" id="<?php echo ($vi["id"]); ?>" disabled="disabled">
+							        		<span class="glyphicon glyphicon-thumbs-up"></span>
+							        		&nbsp;顶起
+							        	</a><?php endif; ?>
+						        	<span class="glyphicon glyphicon-align-right"></span>
+						        	<span class="badge" id="support_num_<?php echo ($vi["id"]); ?>"><?php echo ($vi["supportnum"]); ?></span>
+						        </p>
+						      </div>
+						    </div>
+						  </div><?php endforeach; endif; else: echo "" ;endif; ?>
 					</div><?php break; endswitch;?>
 
 	  </div>

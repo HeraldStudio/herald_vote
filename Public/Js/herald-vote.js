@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
 		
 		for(var i = 1; i < 5; i++){
 			var addId = Number(lastid)+Number(i);
-			var addHtml = '<div class="input-group"><input type="text" name="vote_item_name['+addId+']" class="form-control" id="'+addId+'" placeholder="选项'+addId+'"><input type="hidden" name="vote_item_attach['+addId+']" id="vote_item_attach_'+addId+'"><div class="input-group-btn"><button type="button" class="btn btn-default uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload">添加附件</button></div></div>';
+			var addHtml = '<div class="input-group"><input type="text" name="vote_item_name['+addId+']" class="form-control" id="'+addId+'" placeholder="选项'+addId+'"><input type="hidden" name="vote_item_attach['+addId+']" id="vote_item_attach_'+addId+'"><div class="input-group-btn"><button type="button" class="btn btn-default uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload" id="add_attach_'+addId+'">添加附件</button></div></div>';
 			
 
 			$('#vote-item').append(addHtml);
@@ -48,17 +48,27 @@ $(document).ready(function(){
     onSuccess:function(files,data,xhr,pd){
     	var uploadid = $('#uploadid').val();
     	var inputid = '#vote_item_attach_'+uploadid;
-    	$(inputid).val(data);
+    	var btnid = '#add_attach_'+uploadid;
+      $(inputid).val(data);
+      $(btnid).html('添加成功').removeClass('btn-default').removeAttr('data-target').addClass('btn-success');
 		}
   });
 
   $('#vote_post_name').click(function() {
   	$('#uploadid').val(0);
   });
-  $('.uploadevent').click(function() {
-  	var upid = $(this).parent('div').parent('div').children('input[type=text]').attr('id');
-  	$('#uploadid').val(upid);
+
+  $('body').on('click','.uploadevent', function() {
+    var upid = $(this).parent('div').parent('div').children('input[type=text]').attr('id');
+    console.log($(this).parent('div'));
+    $('#uploadid').val(upid);
   });
+
+  // $('.uploadevent').click(function() {
+  // 	var upid = $(this).parent('div').parent('div').children('input[type=text]').attr('id');
+  // 	console.log($(this).parent('div'));
+  //   $('#uploadid').val(upid);
+  // });
   $('.delete_vote').click(function() {
   	var delid = $(this).attr('id');
   	$.ajax({
@@ -66,7 +76,6 @@ $(document).ready(function(){
   		type: 'post',
   		data: {'vote_id': delid},
   		success:function(data){
-  			console.log(data);
   			$('#vote_info_tr_'+delid).hide("slow");
   		},
   	})
