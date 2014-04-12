@@ -100,8 +100,32 @@
 						      </div>
 						    </div>
 						  </div><?php endforeach; endif; else: echo "" ;endif; ?>
-					</div><?php break; endswitch;?>
-
+					</div><?php break;?>
+				<?php case "video": if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="row">
+						  <div class="">
+						    <div class="thumbnail">
+						      <video src="/herald_vote/Uploads/<?php echo ($vi["attachment"]); ?>" poster="/herald_vote/Uploads/5349442752ede.jpg" width="770" height="500" controls preload></video>
+						      <div class="caption">
+						        <h3><?php echo ($vi["name"]); ?></h3>
+						        <p><?php echo ($vi["description"]); ?></p>
+						        <hr class="vote-divide">
+						        <p>
+						        	<?php if($voteinfo["canvote"] == true): ?><a href="javascript:void(0);" class="btn btn-primary vote-btn-pic" role="button" id="<?php echo ($vi["id"]); ?>">
+							        		<span class="glyphicon glyphicon-thumbs-up"></span>
+							        		&nbsp;顶起
+							        	</a>
+							        <?php else: ?>
+							        	<a href="javascript:void(0);" class="btn btn-primary vote-btn-pic" role="button" id="<?php echo ($vi["id"]); ?>" disabled="disabled">
+							        		<span class="glyphicon glyphicon-thumbs-up"></span>
+							        		&nbsp;顶起
+							        	</a><?php endif; ?>
+						        	<span class="glyphicon glyphicon-align-right"></span>
+						        	<span class="badge" id="support_num_<?php echo ($vi["id"]); ?>"><?php echo ($vi["supportnum"]); ?></span>
+						        </p>
+						      </div>
+						    </div>
+						  </div>
+						</div><?php endforeach; endif; else: echo "" ;endif; break; endswitch;?>
 	  </div>
 	  <div class="col-md-3">
 	  	<br>
@@ -130,6 +154,7 @@
 
 <script type="text/javascript" src="/herald_vote/Public/Js/jquery.js"></script>
 <script type="text/javascript" src="/herald_vote/Public/Js/bootstrap.js"></script>
+<script type="text/javascript" src="/herald_vote/Public/Js/video.js"></script>
 <script type="text/javascript" src="/herald_vote/Public/Js/herald-vote-home.js"></script>
 </body>
 </html>

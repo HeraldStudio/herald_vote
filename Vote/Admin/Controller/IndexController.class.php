@@ -26,7 +26,7 @@ class IndexController extends Controller{
 		$upload = new \Think\Upload();
     $upload->maxSize = 3145728 ;
     $upload->autoSub = false;
-    $upload->exts = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+    $upload->exts = array('jpg', 'gif', 'png', 'jpeg','mp4');// 设置附件上传类型
     $upload->savePath = '/';
 
     $ret = array(); 
@@ -35,7 +35,7 @@ class IndexController extends Controller{
     		array_push($ret, $upload->getError());
     }else{
     }
-    \Think\Log::write($info['savename']);
+    \Think\Log::write($upload->getError());
     echo $info['savename'];
 	}
 

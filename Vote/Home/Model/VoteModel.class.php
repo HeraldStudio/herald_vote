@@ -58,6 +58,10 @@ class VoteModel extends Model{
 			}
 		}
 		if($flag == count($voteitem)){
+			$filename = explode('.',$voteitem[0]['attachment']);
+			if($filename[1] == 'mp4'){
+				return 'video';
+			}
 			return 'picture';
 		}else{
 			return 'text';

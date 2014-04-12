@@ -1,0 +1,93 @@
+[ 2014-04-08T20:22:10+08:00 ] 127.0.0.1 /herald_vote/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.013628s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004568s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004648s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined offset: 1 /var/www/herald_vote/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php 第 495 行.
+NOTIC: [8] Undefined offset: 1 /var/www/herald_vote/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php 第 495 行.
+NOTIC: [8] Undefined offset: 1 /var/www/herald_vote/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php 第 495 行.
+NOTIC: [8] Undefined offset: 1 /var/www/herald_vote/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php 第 495 行.
+NOTIC: [8] Undefined offset: 1 /var/www/herald_vote/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php 第 495 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000071s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000158s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.111686s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.111804s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.018482s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.018556s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000692s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000743s ]
+
+[ 2014-04-08T20:23:01+08:00 ] 127.0.0.1 /herald_vote/index.php/Admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000109s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000054s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000104s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000103s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000289s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031829s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031971s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000126s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000242s ]
+
+[ 2014-04-08T20:23:09+08:00 ] 127.0.0.1 /herald_vote/index.php/Home/Index/voteitem/voteid/1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000146s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000081s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000168s ]
+SQL: SHOW COLUMNS FROM `vote` [ RunTime:0.061162s ]
+SQL: SELECT * FROM `vote` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.032489s ]
+SQL: SHOW COLUMNS FROM `vote_item` [ RunTime:0.036410s ]
+SQL: SHOW COLUMNS FROM `vote_action` [ RunTime:0.032867s ]
+SQL: SELECT * FROM `vote_item` WHERE ( vote_id=1 )  [ RunTime:0.044337s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_id=1 ) LIMIT 1   [ RunTime:0.008724s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_item_id=1 ) LIMIT 1   [ RunTime:0.000505s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_item_id=1 ) LIMIT 1   [ RunTime:0.000089s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_id=1 ) LIMIT 1   [ RunTime:0.000073s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_item_id=2 ) LIMIT 1   [ RunTime:0.000652s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_item_id=2 ) LIMIT 1   [ RunTime:0.000143s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_id=1 ) LIMIT 1   [ RunTime:0.000117s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_item_id=3 ) LIMIT 1   [ RunTime:0.000396s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_item_id=3 ) LIMIT 1   [ RunTime:0.000117s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_id=1 ) LIMIT 1   [ RunTime:0.000138s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_item_id=4 ) LIMIT 1   [ RunTime:0.000458s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_item_id=4 ) LIMIT 1   [ RunTime:0.000244s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_id=1 ) LIMIT 1   [ RunTime:0.000245s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_item_id=5 ) LIMIT 1   [ RunTime:0.009828s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_item_id=5 ) LIMIT 1   [ RunTime:0.000179s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_id=1 ) LIMIT 1   [ RunTime:0.000136s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_item_id=6 ) LIMIT 1   [ RunTime:0.000445s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_item_id=6 ) LIMIT 1   [ RunTime:0.000135s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( vote_id=1 ) LIMIT 1   [ RunTime:0.000337s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `vote_action` WHERE ( user_id=213111517 AND vote_id=1 ) LIMIT 1   [ RunTime:0.000723s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined offset: 1 /var/www/herald_vote/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php 第 495 行.
+NOTIC: [8] Undefined offset: 1 /var/www/herald_vote/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php 第 495 行.
+NOTIC: [8] Undefined offset: 1 /var/www/herald_vote/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php 第 495 行.
+NOTIC: [8] Undefined offset: 1 /var/www/herald_vote/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php 第 495 行.
+NOTIC: [8] Undefined offset: 1 /var/www/herald_vote/ThinkPHP/Library/Think/Template/TagLib/Cx.class.php 第 495 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000044s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000102s ]
+NOTIC: [8] Use of undefined constant state - assumed 'state' /var/www/herald_vote/Vote/Runtime/Cache/Home/5f563b5fca2a7d20915146503831a22e.php 第 44 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026158s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026271s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000048s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000089s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000050s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000093s ]
+

@@ -40,12 +40,13 @@ jQuery(document).ready(function($) {
 $(document).ready(function(){
   $("#votepostuploader").uploadFile({
     url:"/herald_vote/index.php/Admin/Index/addVotePost/",
-    allowedTypes:"jpg,png,gif,jpeg",
+    allowedTypes:"jpg,png,gif,jpeg,mp4",
     showAbort:true,
     showPreivew:true,
     fileName:"vote_post",
     dragDrop:false,
     onSuccess:function(files,data,xhr,pd){
+      console.log(files);
     	var uploadid = $('#uploadid').val();
     	var inputid = '#vote_item_attach_'+uploadid;
     	var btnid = '#add_attach_'+uploadid;
@@ -60,7 +61,6 @@ $(document).ready(function(){
 
   $('body').on('click','.uploadevent', function() {
     var upid = $(this).parent('div').parent('div').children('input[type=text]').attr('id');
-    console.log($(this).parent('div'));
     $('#uploadid').val(upid);
   });
 
