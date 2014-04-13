@@ -6,7 +6,6 @@
 	<title>先声投票</title>
 	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/style-home.css" />
-	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/app.css" />
 </head>
 <body>
 	<header>
