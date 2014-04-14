@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>先声投票</title>
 	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/app.css" />
 	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/style-home.css" />
 </head>
 <body>
@@ -20,7 +21,7 @@
         </nav>
     </div>
 	</header>
-<div class="">
+<div>
 	<div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 			<li data-target="#carousel-example-captions" data-slide-to="0" class=""></li>
@@ -180,11 +181,8 @@
   </div>
 </section>
 <footer>
-	<hr>
 	<center>
-		<p>&copy; 2001-2014 <a href="http://herald.seu.edu.cn">herald.seu.edu.cn</a> All rights reserved.
-
-</p>
+		<p>&copy; 2001-2014 <a href="http://herald.seu.edu.cn">herald.seu.edu.cn</a> All rights reserved.</p>
 	</center>
 </footer>
 

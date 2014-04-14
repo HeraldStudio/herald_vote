@@ -428,10 +428,6 @@ section.blu p {
 	margin-right: 20px;
 }
 
-hr {
-	border-top: solid 1px #b7bbbd;
-}
-
 section.pagina-testo-header {
 	padding-top: 100px;
 	padding-bottom: 20px;
@@ -2159,40 +2155,6 @@ figure.alignnone {
 /* ==========================================================================
 STILI GENERICI @ 768
 ========================================================================== */
-
-	
-
-
-
-
-h1 {
-	font-size: 40px;
-}
-
-h2 {
-	font-size: 32px;
-}
-
-h3 {
-	font-size: 26px;
-}
-
-h4 {
-	font-size: 19px;
-}
-
-h5 {
-	font-size: 16px;
-}
-
-h6 {
-	font-size: 13px;
-}
-
-p {
-	margin-bottom: 1em;
-}
-
 
 .header-titolo {
 margin-left: 20%;

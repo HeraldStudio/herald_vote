@@ -5,8 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>先声投票</title>
 	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/style-home.css" />
 	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/app.css" />
+	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/style-home.css" />
 </head>
 <body>
 	<header>
@@ -22,21 +22,17 @@
     </div>
 	</header>
 <div class="container">
+	<div class="row itemhead">
+		<div class="jumbotron">
+			<?php if(!empty($voteinfo["image"])): ?><img class="vote-post pull-right" src="/herald_vote/Uploads/<?php echo ($voteinfo["image"]); ?>" width="400"><?php endif; ?>
+		  <h1><span class="glyphicon glyphicon-stats"></span>&nbsp;<?php echo ($voteinfo["topic"]); ?></h1>
+		  <br>
+		  <p class="vote-description"><?php echo ($voteinfo["description"]); ?></p>
+		  <!-- <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p> -->
+		</div>
+	</div>
 	<div class="row">
 	  <div class="col-md-8">
-	  	<div class="vote-info-item">
-				<h2 class="vote-topic"><span class="glyphicon glyphicon-stats"></span>&nbsp;<?php echo ($voteinfo["topic"]); ?></h2>
-		  	<blockquote class="vote-description-block">
-		  		<p class="vote-description"><?php echo ($voteinfo["description"]); ?></p>
-		  		<div class="vote-owner">
-		  			<span class="glyphicon glyphicon-user"></span>&nbsp;测试测
-		  			<span class="glyphicon glyphicon-time"></span>&nbsp;<?php echo ($voteinfo["expired_time"]); ?>&nbsp;
-		  			<?php if($voteinfo.state): ?><span class="label label-success">正在进行</span>
-		  			<?php else: ?>
-		  				<span class="label label-danger">已结束</span><?php endif; ?>
-		  		</div>
-		  	</blockquote>
-			</div>
 			<br>
 			<br>
 			<input type="hidden" id="vote_id" value="<?php echo ($voteinfo["id"]); ?>">
@@ -67,32 +63,53 @@
 					<br>
 					<?php if($voteinfo["canvote"] == true): ?><button type="button" class="btn btn-success vote-btn" id="submit_vote">投票</button><?php endif; break;?>
 				<?php case "picture": ?><div class="row">
-						<?php if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="col-sm-6 col-md-4">
-						    <div class="thumbnail">
-						      <img src="/herald_vote/Uploads/<?php echo ($vi["attachment"]); ?>" alt="...">
-						      <div class="caption">
-						        <h3><?php echo ($vi["name"]); ?></h3>
-						        <p><?php echo ($vi["description"]); ?></p>
-						        <hr class="vote-divide">
-						        <p>
-						        	<?php if($voteinfo["canvote"] == true): ?><a href="javascript:void(0);" class="btn btn-primary vote-btn-pic" role="button" id="<?php echo ($vi["id"]); ?>">
-							        		<span class="glyphicon glyphicon-thumbs-up"></span>
-							        		&nbsp;顶起
-							        	</a>
-							        <?php else: ?>
-							        	<a href="javascript:void(0);" class="btn btn-primary vote-btn-pic" role="button" id="<?php echo ($vi["id"]); ?>" disabled="disabled">
-							        		<span class="glyphicon glyphicon-thumbs-up"></span>
-							        		&nbsp;顶起
-							        	</a><?php endif; ?>
-						        	<span class="glyphicon glyphicon-align-right"></span>
-						        	<span class="badge" id="support_num_<?php echo ($vi["id"]); ?>"><?php echo ($vi["supportnum"]); ?></span>
-						        </p>
-						      </div>
-						    </div>
-						  </div><?php endforeach; endif; else: echo "" ;endif; ?>
+						<?php if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="media">
+					      <div class="row">
+					        <div class="media-img col-sm-5 col-md-4 col-lg-4">
+					          <img src="/herald_vote/Uploads/poster.png"></img>
+					        	<div class="btn-group vote-btn-pic">
+										  <button type="button" class="btn btn-success">顶他&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span></button>
+										  <button type="button" class="btn btn-warning">踩他&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span></button>
+										</div>
+					        </div>
+					        <div class="media-post col-sm-7 col-md-8 col-lg-8">
+					          <h3 class="animated fadeIn delay03">
+					            <?php echo ($vi["name"]); ?>         
+					        	</h3>
+					        	<hr>
+					          <h6 class="animated fadeIn delay05">
+					          	<span class="Newsletter">牛人张三</span> 
+					          	<span class="sep">/</span> 
+					          </h6>    
+					          <p><?php echo ($vi["description"]); ?></p>
+					        </div>
+					      </div>
+					    </div><?php endforeach; endif; else: echo "" ;endif; ?>
 					</div><?php break;?>
-				<?php case "video": if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="row">
-						  <div class="">
+				<?php case "video": if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="media">
+				      <div class="row">
+				        <div class="media-img col-sm-8 col-md-9 col-lg-9">
+				          <video src="/herald_vote/Uploads/<?php echo ($vi["attachment"]); ?>" poster="/herald_vote/Uploads/poster.png" width="100%" height="100%" controls preload></video>
+				        </div>
+				        <div class="media-post col-sm-4 col-md-3 col-lg-3">
+				          <h3 class="animated fadeIn delay03">
+				          	<?php echo ($vi["name"]); ?>
+				        	</h3>
+				        	<hr>
+				          <h6 class="animated fadeIn delay05">
+				          	<span class="Newsletter">牛人张三</span> 
+				          	<span class="sep">/</span> 
+				          </h6> 
+				          <div class="btn-group vote-btn-vdo">
+									  <button type="button" class="btn btn-success">顶他&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span></button>
+									  <button type="button" class="btn btn-warning">踩他&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span></button>
+									</div>  
+				          <p><?php echo ($vi["description"]); ?></p>
+				        </div>
+				      </div>
+				    </div>
+						<!-- <div class="row">
+						  <div>
 						    <div class="thumbnail">
 						      <video src="/herald_vote/Uploads/<?php echo ($vi["attachment"]); ?>" poster="/herald_vote/Uploads/5349442752ede.jpg" width="770" height="500" controls preload></video>
 						      <div class="caption">
@@ -115,12 +132,9 @@
 						      </div>
 						    </div>
 						  </div>
-						</div><?php endforeach; endif; else: echo "" ;endif; break; endswitch;?>
+						</div> --><?php endforeach; endif; else: echo "" ;endif; break; endswitch;?>
 	  </div>
 	  <div class="col-md-3">
-	  	<br>
-	  	<br>
-	  	<br>
 	  	<h3>更多精彩投票...</h3>
 	  	<br>
 			<div class="list-group">
@@ -132,13 +146,25 @@
 	  	</div>
 	  </div>
 	</div>
-</div>
-<footer>
 	<hr>
-	<center>
-		<p>&copy; 2001-2014 <a href="http://herald.seu.edu.cn">herald.seu.edu.cn</a> All rights reserved.
+	<div class="row vote-comment">
+		<div id="disqus_thread"></div>
+	</div>
+</div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'heraldvote'; // required: replace example with your forum shortname
 
-</p>
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<footer>
+	<center>
+		<p>&copy; 2001-2014 <a href="http://herald.seu.edu.cn">herald.seu.edu.cn</a> All rights reserved.</p>
 	</center>
 </footer>
 

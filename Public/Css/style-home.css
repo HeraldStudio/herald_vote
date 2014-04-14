@@ -1,6 +1,9 @@
 body{
 	/*background: #efeee4;*/
 }
+footer{
+	padding: 40px;
+}
 /*vote result*/
 .vote-result{
 	margin-top:100px;
@@ -15,8 +18,17 @@ body{
 	/*margin-left: 40px;*/
 	/*margin-bottom: 50px;*/
 }
+.vote-post{
+	border: 1px solid #ddd; 
+	max-width:400px;
+	max-height: 260px; 
+}
+.vote-comment{
+	/*max-width: 100%;*/
+	margin:60px 10%;
+}
 .vote-description{
-	/*width: 50%;*/
+	width: 50%;
 	color: #3c763d;
 	/*margin-left: 40px;*/
 	font-size: 15px;
@@ -29,8 +41,13 @@ body{
 	float: right;
 }
 .vote-btn-pic{
-	margin-right: 40%;
+	margin: 30px 0 20px 50px;
+	/*margin-left: 50px;*/
+	/*margin-right: 40%;*/
 	/*right: 110px;*/
+}
+.vote-btn-vdo{
+	margin: 10px 0;
 }
 .vote-item-name{
 	text-align: right;
@@ -93,6 +110,17 @@ body{
 .icon-logo > img{
 	width: 40%;
 	/*background-image: url('../Images/bg-5.jpg');*/
+}
+.itemhead{
+	margin-top: 10%;
+}
+.jumbotron h1{
+	font-size: 36px;
+}
+.jumbotron{
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	min-height: 350px;
+	/*padding: 80px;*/
 }
 /* =Header
 -------------------------------------------------------------- */
