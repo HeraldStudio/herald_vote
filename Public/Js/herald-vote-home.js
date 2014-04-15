@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
 	  }
 	  ajax(voteid,values,displaytype);
 	});
-	$('.vote-btn-pic').click(function() {
+	$('.vote-btn-sub').click(function() {
 		var voteid = $('#vote_id').val();
 		var displaytype = $('#vote_diaplay_type').val();
 		var values = {};
@@ -76,7 +76,7 @@ function textresponse(result){
 
 function picresponse(result){
 	if((result.type == 'success' && result.canvote == false)||result.type == 'danger'){
-		$(".vote-btn-pic").attr({
+		$(".vote-btn-sub").attr({
 			"disabled": 'disabled'
 		});
 	}

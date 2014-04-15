@@ -8,7 +8,25 @@ class IndexController extends Controller{
 			$this -> error('登录后才可以访问！');
 			return;
 		}
-		$this -> getUserVotes();
+		$this -> getICreateVote();
+		$this -> display();
+	}
+	public function myjoin(){
+		$userid = I('get.userid');
+		if(empty($userid)){
+			$this -> error('登录后才可以访问！');
+			return;
+		}
+		$this -> getIJoinVote();
+		$this -> display();
+	}
+
+	public function publish(){
+		$userid = I('get.userid');
+		if(empty($userid)){
+			$this -> error('登录后才可以访问！');
+			return;
+		}
 		$this -> display();
 	}
 
@@ -35,7 +53,6 @@ class IndexController extends Controller{
     		array_push($ret, $upload->getError());
     }else{
     }
-    \Think\Log::write($upload->getError());
     echo $info['savename'];
 	}
 
@@ -53,5 +70,17 @@ class IndexController extends Controller{
 		$Vote = D('Vote');
 		$uservote = $Vote -> getVoteByUserId();
 		$this -> assign('uservote',$uservote);
+	}
+
+	private function getICreateVote(){
+		$Vote = D('Vote');
+		$IcreateVote = $Vote -> getVoteByUserId();
+		$this -> assign('voteinfo',$IcreateVote);
+	}
+
+	private function getIJoinVote(){
+		$Vote = D('Vote');
+		$IJoinVote = $Vote -> getUserJoinById();
+		$this -> assign('voteinfo',$IJoinVote);
 	}
 }

@@ -69,25 +69,25 @@
     	</center>
     </div>
     <div class="row">
-      <div class="col-sm-4">
-        <div class="media">
-          <div class="row ">
-            <div class="media-img  pull-left  col-sm-5  col-md-4 ">
-              <div class="img-overlay "> 
-              	<a class="btn  btn-primary  animated fadeInUp " href="/about/" rel="bookmark">快去投票</a> 
+      <?php if(is_array($voteinfo)): $i = 0; $__LIST__ = $voteinfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="col-sm-4">
+          <div class="media">
+            <div class="row ">
+              <div class="media-img  pull-left  col-sm-5  col-md-4 ">
+                <div class="img-overlay "> 
+                	<a class="btn  btn-primary  animated fadeInUp " href="<?php echo U('Home/Index/voteitem',array('voteid' => $vo[id]));?>" rel="bookmark">快去投票</a> 
+                </div>
+                <img src="/herald_vote/Public/Images/bg-6.jpg" alt="About" width="150" height="150"> 
               </div>
-              <img src="/herald_vote/Public/Images/bg-6.jpg" alt="About" width="150" height="150"> 
-            </div>
-            <div class="media-body   col-sm-7 col-md-8  ">
-              <h4 class="media-heading"> 
-              	测试投票
-              </h4>
-              <p class="hidden-sm">测试投票测试投票测试投票测试投票测试投票测试投票测试投票测试投票</p>
+              <div class="media-body   col-sm-7 col-md-8  ">
+                <h4 class="media-heading"> 
+                	<?php echo ($vo["topic"]); ?>
+                </h4>
+                <p class="hidden-sm"><?php echo ($vo["description"]); ?></p>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
+        </div><?php endforeach; endif; else: echo "" ;endif; ?>
+     <!--  <div class="col-sm-4">
         <div class="media">
             <div class="row ">
             <div class="media-img  pull-left  col-sm-5  col-md-4 ">
@@ -176,7 +176,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>

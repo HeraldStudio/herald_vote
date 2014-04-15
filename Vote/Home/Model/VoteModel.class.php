@@ -20,6 +20,10 @@ class VoteModel extends Model{
 		return $this -> where('id='.$voteid) -> getField('limit');
 	}
 
+	public function getLastVote(){
+		return $this -> order('id desc') -> limit(6) -> select();
+	}
+
 	private function getVoteItem($voteid){
 		$VoteItem = D('VoteItem');
 		$VoteAction = D('VoteAction');

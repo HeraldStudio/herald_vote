@@ -21,8 +21,9 @@
 	float: left;
 	bottom: 10px;
 }
-#VoteItem{
-	/*display: none;*/
+
+#vote-item{
+	margin-top: 25px;
 }
 .vote-create-form{
 	width: 80%;
@@ -44,11 +45,6 @@
   height: 18px;
   background: green;
 }
-
-.input-group{
-	margin-top:20px;
-}
-
 .ajax-file-upload-statusbar {
 border: 1px solid #0ba1b5;
 margin-top: 10px;

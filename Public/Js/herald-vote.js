@@ -1,12 +1,9 @@
 jQuery(document).ready(function($) {
 	$('#addmoreitem').click(function() {
-		var lastid = $('#vote-item div:last-child>input').attr('id');
-		
+		var lastid = $('.uploadevent').last().attr('id');
 		for(var i = 1; i < 5; i++){
 			var addId = Number(lastid)+Number(i);
-			var addHtml = '<div class="input-group"><input type="text" name="vote_item_name['+addId+']" class="form-control" id="'+addId+'" placeholder="选项'+addId+'"><input type="hidden" name="vote_item_attach['+addId+']" id="vote_item_attach_'+addId+'"><div class="input-group-btn"><button type="button" class="btn btn-default uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload" id="add_attach_'+addId+'">添加附件</button></div></div>';
-			
-
+			var addHtml = '<div class="panel-group" id="accordion"><div class="panel panel-default"><div class="panel-heading"><div class="input-group"><input type="text" name="vote_item_name['+addId+']" class="form-control" placeholder="选项'+addId+'"><div class="input-group-btn"><a type="button" class="btn btn-default uploadevent" data-toggle="collapse" data-parent="#accordion" href="#add_info_'+addId+'">添加详情</a></div></div></div><div id="add_info_'+addId+'" class="panel-collapse collapse"><div class="panel-body"><input type="hidden" name="vote_item_attach['+addId+']" id="vote_item_attach_'+addId+'"><button type="button" class="btn btn-info uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload" id="'+addId+'">上传附件</button><br><br><textarea class="form-control" rows="2" name="vote_item_description['+addId+']" placeholder="选项描述"></textarea></div></div></div></div>';
 			$('#vote-item').append(addHtml);
 			if(addId == 20){
 				$('#addmoreitem').css({
@@ -41,18 +38,16 @@ $(document).ready(function(){
   $("#votepostuploader").uploadFile({
     url:"/herald_vote/index.php/Admin/Index/addVotePost/",
     allowedTypes:"jpg,png,gif,jpeg,mp4",
-    showAbort:true,
-    showPreivew:true,
     fileName:"vote_post",
-    dragDrop:false,
-    onSuccess:function(files,data,xhr,pd){
-      console.log(files);
+    showAbort:true,
+    uploadButtonClass:"btn btn-success",
+    onSuccess:function(files,data,xhr){
     	var uploadid = $('#uploadid').val();
     	var inputid = '#vote_item_attach_'+uploadid;
-    	var btnid = '#add_attach_'+uploadid;
+    	var btnid = '#'+uploadid;
       $(inputid).val(data);
-      $(btnid).html('添加成功').removeClass('btn-default').removeAttr('data-target').addClass('btn-success');
-		}
+      $(btnid).html('添加成功').removeClass('btn-info').removeAttr('data-target').addClass('btn-success').attr('disabled', 'disabled');;
+    }
   });
 
   $('#vote_post_name').click(function() {
@@ -60,13 +55,12 @@ $(document).ready(function(){
   });
 
   $('body').on('click','.uploadevent', function() {
-    var upid = $(this).parent('div').parent('div').children('input[type=text]').attr('id');
+    var upid = $(this).attr('id');
     $('#uploadid').val(upid);
   });
 
   // $('.uploadevent').click(function() {
-  // 	var upid = $(this).parent('div').parent('div').children('input[type=text]').attr('id');
-  // 	console.log($(this).parent('div'));
+  // 	var upid = $(this).attr('id');
   //   $('#uploadid').val(upid);
   // });
   $('.delete_vote').click(function() {

@@ -46,25 +46,27 @@
     	</center>
     </div>
     <div class="row">
-      <div class="col-sm-4">
-        <div class="media">
-          <div class="row ">
-            <div class="media-img  pull-left  col-sm-5  col-md-4 ">
-              <div class="img-overlay "> 
-              	<a class="btn  btn-primary  animated fadeInUp " href="/about/" rel="bookmark">快去投票</a> 
+      <volist name="voteinfo" id="vo">
+        <div class="col-sm-4">
+          <div class="media">
+            <div class="row ">
+              <div class="media-img  pull-left  col-sm-5  col-md-4 ">
+                <div class="img-overlay "> 
+                	<a class="btn  btn-primary  animated fadeInUp " href="{:U('Home/Index/voteitem',array('voteid' => $vo[id]))}" rel="bookmark">快去投票</a> 
+                </div>
+                <img src="/herald_vote/Public/Images/bg-6.jpg" alt="About" width="150" height="150"> 
               </div>
-              <img src="/herald_vote/Public/Images/bg-6.jpg" alt="About" width="150" height="150"> 
-            </div>
-            <div class="media-body   col-sm-7 col-md-8  ">
-              <h4 class="media-heading"> 
-              	测试投票
-              </h4>
-              <p class="hidden-sm">测试投票测试投票测试投票测试投票测试投票测试投票测试投票测试投票</p>
+              <div class="media-body   col-sm-7 col-md-8  ">
+                <h4 class="media-heading"> 
+                	{$vo.topic}
+                </h4>
+                <p class="hidden-sm">{$vo.description}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-4">
+      </volist>
+     <!--  <div class="col-sm-4">
         <div class="media">
             <div class="row ">
             <div class="media-img  pull-left  col-sm-5  col-md-4 ">
@@ -153,7 +155,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>

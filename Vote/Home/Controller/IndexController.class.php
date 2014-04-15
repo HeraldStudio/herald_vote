@@ -3,6 +3,9 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
   public function index(){
+    $Vote = D('Vote');
+    $voteinfo = $Vote -> getLastVote();
+    $this -> assign('voteinfo',$voteinfo);
   	$this -> display();
   }
   public function voteitem(){

@@ -28,7 +28,6 @@
 		  <h1><span class="glyphicon glyphicon-stats"></span>&nbsp;<?php echo ($voteinfo["topic"]); ?></h1>
 		  <br>
 		  <p class="vote-description"><?php echo ($voteinfo["description"]); ?></p>
-		  <!-- <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p> -->
 		</div>
 	</div>
 	<div class="row">
@@ -67,10 +66,17 @@
 					      <div class="row">
 					        <div class="media-img col-sm-5 col-md-4 col-lg-4">
 					          <img src="/herald_vote/Uploads/poster.png"></img>
-					        	<div class="btn-group vote-btn-pic">
-										  <button type="button" class="btn btn-success">顶他&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span></button>
-										  <button type="button" class="btn btn-warning">踩他&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span></button>
-										</div>
+					        	<?php if($voteinfo["canvote"] == true): ?><button class="btn btn-primary vote-btn-sub vote-btn-pic" role="button" id="<?php echo ($vi["id"]); ?>">
+						        		<span class="glyphicon glyphicon-thumbs-up"></span>
+						        		&nbsp;顶起
+						        	</button>
+						        <?php else: ?>
+						        	<button href="javascript:void(0);" class="btn btn-primary vote-btn-pic" role="button" id="<?php echo ($vi["id"]); ?>" disabled="disabled">
+						        		<span class="glyphicon glyphicon-thumbs-up"></span>
+						        		&nbsp;顶起
+						        	</button><?php endif; ?> 
+				          <span class="glyphicon glyphicon-align-right"></span>
+						      <span class="badge" id="support_num_<?php echo ($vi["id"]); ?>"><?php echo ($vi["supportnum"]); ?></span> 
 					        </div>
 					        <div class="media-post col-sm-7 col-md-8 col-lg-8">
 					          <h3 class="animated fadeIn delay03">
@@ -100,10 +106,17 @@
 				          	<span class="Newsletter">牛人张三</span> 
 				          	<span class="sep">/</span> 
 				          </h6> 
-				          <div class="btn-group vote-btn-vdo">
-									  <button type="button" class="btn btn-success">顶他&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span></button>
-									  <button type="button" class="btn btn-warning">踩他&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span></button>
-									</div>  
+				          <?php if($voteinfo["canvote"] == true): ?><button class="btn btn-primary vote-btn-sub vote-btn-vdo" role="button" id="<?php echo ($vi["id"]); ?>">
+					        		<span class="glyphicon glyphicon-thumbs-up"></span>
+					        		&nbsp;顶起
+					        	</button>
+					        <?php else: ?>
+					        	<button href="javascript:void(0);" class="btn btn-primary vote-btn-vdo" role="button" id="<?php echo ($vi["id"]); ?>" disabled="disabled">
+					        		<span class="glyphicon glyphicon-thumbs-up"></span>
+					        		&nbsp;顶起
+					        	</button><?php endif; ?> 
+				          <span class="glyphicon glyphicon-align-right"></span>
+						      <span class="badge" id="support_num_<?php echo ($vi["id"]); ?>"><?php echo ($vi["supportnum"]); ?></span> 
 				          <p><?php echo ($vi["description"]); ?></p>
 				        </div>
 				      </div>

@@ -56,13 +56,32 @@ class VoteModel extends Model{
 	public function getVoteByUserId(){
 		$userid = I('get.userid');
 		$uservotes = $this -> where('user_id='.$userid) -> order('create_time') -> select();
-		foreach($uservotes as $key => $uservote){
+		return $this -> getVoteState($uservotes);
+	}
+
+	public function getUserJoinById(){
+		$userid = I('get.userid');
+		$VoteAction = D('VoteAction');
+		$userJoinVotes = $VoteAction -> getUserJoinVote($userid);
+		$voteinfo = array();
+		foreach ($userJoinVotes as $key => $userJoinVote) {
+			array_push($voteinfo, $this -> getVoteById($userJoinVote['vote_id']));
+		}
+		return $this -> getVoteState($voteinfo);
+	}
+
+	public function getVoteState($voteinfo){
+		foreach($voteinfo as $key => $uservote){
 			if(strtotime($uservote['expired_time']) >= strtotime(date("Y-m-d",time()))){
-				$uservotes[$key]['state'] = "正在进行";
+				$voteinfo[$key]['state'] = "正在进行";
 			}else{
-				$uservotes[$key]['state'] = "已结束";
+				$voteinfo[$key]['state'] = "已结束";
 			}
 		}
-		return $uservotes;
+		return $voteinfo;
+	}
+
+	public function getVoteById($voteid){
+		return $this -> where('id='.$voteid) -> find();
 	}
 }

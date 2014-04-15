@@ -1,0 +1,257 @@
+<div id="page-wrapper">
+	<div class="row">
+    <div class="col-lg-12">
+      <h1>发布投票 <small>Enter Your Data</small></h1>
+			<ol class="breadcrumb">
+			  <li><a href="javascript:void(0);"><i class="fa fa-dashboard"></i> Admin</a></li>
+			  <li class="active"><i class="fa fa-edit"></i> Publish</li>
+			</ol>
+		</div>
+  </div><!-- /.row -->
+	
+	<div class="row">
+		<form role="form" action="{:U('Admin/Index/createVote')}" method="post">
+			<div class="col-lg-6">
+				<div class="form-group">
+			    <label for="vote-topic">投票主题:</label>
+			    <input type="text" name="topic" class="form-control" id="vote-topic" placeholder="投票主题">
+			  </div>
+			  <div class="form-group">
+			    <label for="vote-description">详细描述:</label>
+			    <textarea name="description" id="vote-description" class="form-control" placeholder="详细描述" rows="3"></textarea>
+			  </div>
+			  <label for="vote-topic">截止日期:</label>
+				<div class="input-group date">
+					<input type="text" class="form-control" name="expired_time">
+					<span class="input-group-addon">
+						<i class="glyphicon glyphicon-th"></i>
+					</span>
+				</div>
+				<br>
+				<button type="button" class="btn btn-info uploadevent" id="0" tabindex="-1" data-toggle="modal" data-target="#model_upload">
+					上传海报
+				</button>
+				<input type="hidden" id="vote_item_attach_0" name="vote_image">
+				<br>
+				<br>
+				<label for="vote-topic">可投选项:</label>
+				<div class="radio">
+				  <label>
+				    <input class="vote-type" type="radio" name="vote_type" id="vote_type1" value="1" checked>
+				    单选
+				  </label>
+				</div>
+				<div class="radio" id="vote_num_more">
+				  <label>
+				    <input class="vote-type" type="radio" name="vote_type" id="vote_type2" value="2">
+				    多选
+				  </label>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div id="vote-item">
+					<div class="panel-group" id="accordion">
+					  <div class="panel panel-default">
+					    <div class="panel-heading">
+					    	<div class="input-group">
+							    <input type="text" name="vote_item_name[1]" class="form-control" placeholder="选项1">
+							  	<div class="input-group-btn">
+								    <a type="button" class="btn btn-default uploadevent" data-toggle="collapse" data-parent="#accordion" href="#add_info_1">添加详情</a>
+								  </div>
+							  </div>
+					    </div>
+					    <div id="add_info_1" class="panel-collapse collapse">
+					      <div class="panel-body">
+					      	<input type="hidden" name="vote_item_attach[1]" id="vote_item_attach_1">
+							    <button type="button" class="btn btn-info uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload" id="1">上传附件</button>
+							  	<br>
+							  	<br>
+							  	<textarea class="form-control" rows="2" name="vote_item_description[1]" placeholder="选项描述"></textarea>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					<div class="panel-group" id="accordion">
+					  <div class="panel panel-default">
+					    <div class="panel-heading">
+					    	<div class="input-group">
+							    <input type="text" name="vote_item_name[2]" class="form-control" placeholder="选项2">
+							  	<div class="input-group-btn">
+								    <a type="button" class="btn btn-default uploadevent" data-toggle="collapse" data-parent="#accordion" href="#add_info_2">添加详情</a>
+								  </div>
+							  </div>
+					    </div>
+					    <div id="add_info_2" class="panel-collapse collapse">
+					      <div class="panel-body">
+					      	<input type="hidden" name="vote_item_attach[2]" id="vote_item_attach_2">
+							    <button type="button" class="btn btn-info uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload" id="2">上传附件</button>
+							  	<br>
+							  	<br>
+							  	<textarea class="form-control" rows="2" name="vote_item_description[2]" placeholder="选项描述"></textarea>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					<div class="panel-group" id="accordion">
+					  <div class="panel panel-default">
+					    <div class="panel-heading">
+					    	<div class="input-group">
+							    <input type="text" name="vote_item_name[3]" class="form-control" placeholder="选项3">
+							  	<div class="input-group-btn">
+								    <a type="button" class="btn btn-default uploadevent" data-toggle="collapse" data-parent="#accordion" href="#add_info_3">添加详情</a>
+								  </div>
+							  </div>
+					    </div>
+					    <div id="add_info_3" class="panel-collapse collapse">
+					      <div class="panel-body">
+					      	<input type="hidden" name="vote_item_attach[3]" id="vote_item_attach_3">
+							    <button type="button" class="btn btn-info uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload" id="3">上传附件</button>
+							  	<br>
+							  	<br>
+							  	<textarea class="form-control" rows="2" name="vote_item_description[3]" placeholder="选项描述"></textarea>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					<div class="panel-group" id="accordion">
+					  <div class="panel panel-default">
+					    <div class="panel-heading">
+					    	<div class="input-group">
+							    <input type="text" name="vote_item_name[4]" class="form-control" placeholder="选项4">
+							  	<div class="input-group-btn">
+								    <a type="button" class="btn btn-default uploadevent" data-toggle="collapse" data-parent="#accordion" href="#add_info_4">添加详情</a>
+								  </div>
+							  </div>
+					    </div>
+					    <div id="add_info_4" class="panel-collapse collapse">
+					      <div class="panel-body">
+					      	<input type="hidden" name="vote_item_attach[4]" id="vote_item_attach_4">
+							    <button type="button" class="btn btn-info uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload" id="4">上传附件</button>
+							  	<br>
+							  	<br>
+							  	<textarea class="form-control" rows="2" name="vote_item_description[4]" placeholder="选项描述"></textarea>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				<!-- 	<div class="panel-group" id="accordion">
+					  <div class="panel panel-default">
+					    <div class="panel-heading">
+					    	<div class="input-group">
+							    <input type="text" name="vote_item_name[2]" class="form-control" id="2" placeholder="选项2">
+							  	<div class="input-group-btn">
+								    <a type="button" class="btn btn-default uploadevent" data-toggle="collapse" data-parent="#accordion" href="#add_info_2">添加详情</a>
+								  </div>
+							  </div>
+					    </div>
+					    <div id="add_info_2" class="panel-collapse collapse">
+					      <div class="panel-body">
+					      	<input type="hidden" name="vote_item_attach[2]" id="vote_item_attach_2">
+					      	<div class="input-group-btn">
+								    <button type="button" class="btn btn-default uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload" id="add_attach_2">上传附件</button>
+								  </div>
+					        <textarea class="form-control" rows="2" placeholder="选项描述"></textarea>
+					      </div>
+					    </div>
+					  </div>
+					</div> -->
+					<!-- <div class="input-group">
+						<input type="hidden" name="vote_item_attach[1]" id="vote_item_attach_1">
+				    <div class="panel-heading"></div>
+				    <input type="text" name="vote_item_name[1]" class="form-control" id="1" placeholder="选项1">
+				  	<div class="input-group-btn">
+					    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#model_upload" id="add_attach_1">添加详情</button>
+					  </div>
+					  <div id="add_info_1" class="add-more-info">
+					  	test
+					  </div>
+				  </div> -->
+			<!-- 	  <div class="input-group">
+				    <input type="text" name="vote_item_name[2]" class="form-control" id="2" placeholder="选项2">
+				  	<input type="hidden" name="vote_item_attach[2]" id="vote_item_attach_2">
+				  	<div class="input-group-btn">
+					    <button type="button" class="btn btn-default uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload" id="add_attach_2">添加详情</button>
+					  </div>
+				  </div>
+				  <div class="input-group">
+				    <input type="text" name="vote_item_name[3]" class="form-control" id="3" placeholder="选项3">
+				  	<input type="hidden" name="vote_item_attach[3]" id="vote_item_attach_3">
+				  	<div class="input-group-btn">
+					    <button type="button" class="btn btn-default uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload" id="add_attach_3">添加详情</button>
+					  </div>
+				  </div>
+				  <div class="input-group">
+				    <input type="text" name="vote_item_name[4]" class="form-control" id="4" placeholder="选项4">
+				  	<input type="hidden" name="vote_item_attach[4]" id="vote_item_attach_4">
+				  	<div class="input-group-btn">
+					    <button type="button" class="btn btn-default uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload" id="add_attach_4">添加详情</button>
+					  </div>
+				  </div>
+				  <div class="input-group">
+				    <input type="text" name="vote_item_name[5]" class="form-control" id="5" placeholder="选项5">
+				  	<input type="hidden" name="vote_item_attach[5]" id="vote_item_attach_5">
+				  	<div class="input-group-btn">
+					    <button type="button" class="btn btn-default uploadevent" tabindex="-1" data-toggle="modal" data-target="#model_upload" id="add_attach_5">添加详情</button>
+					  </div>
+				  </div> -->
+				</div>
+				<br>
+			  <a href="javascript:void(0);" id="addmoreitem"><span class="glyphicon glyphicon-plus"></span>增加更多选项</a><br><br>
+				<button type="submit" class="btn btn-success submit-vote">发布投票</button>
+			</div>
+		</form>
+	</div>
+	<div class="modal fade" id="model_upload" tabindex="-1" role="dialog" aria-labelledby="UploadsModel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">上传附件</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<div id="votepostuploader">上传附件</div>
+	      	<input type="hidden" id="uploadid">
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- <div class="vote-create">
+		<form role="form" class="vote-create-form" action="{:U('Admin/Index/createVote')}" method="post">
+		  <div class="vote-form">
+        <div class="form-group">
+			    <label for="vote-topic">投票主题:</label>
+			    <input type="text" name="topic" class="form-control" id="vote-topic" placeholder="投票主题">
+			  </div>
+			  <div class="form-group">
+			    <label for="vote-description">详细描述:</label>
+			    <textarea name="description" id="vote-description" class="form-control" placeholder="详细描述" rows="3"></textarea>
+			  </div>
+			  <label for="vote-topic">截止日期:</label>
+				<div class="input-group date">
+					<input type="text" class="form-control" name="expired_time"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+				</div>
+				<br>
+				<button type="button" class="btn btn-info" id="vote_post_name" tabindex="-1" data-toggle="modal" data-target="#model_upload">上传海报</button>
+				<input type="hidden" id="vote_item_attach_0" name="vote_image">
+				<br>
+				<br>
+				<label for="vote-topic">可投选项:</label>
+				<div class="radio">
+				  <label>
+				    <input class="vote-type" type="radio" name="vote_type" id="vote_type1" value="1" checked>
+				    单选
+				  </label>
+				</div>
+				<div class="radio" id="vote_num_more">
+				  <label>
+				    <input class="vote-type" type="radio" name="vote_type" id="vote_type2" value="2">
+				    多选
+				  </label>
+				</div>
+    		<div id="vote-item">
+			  	
+			  </div>
+			  
+		  </div>
+		</form>-->
+</div>
