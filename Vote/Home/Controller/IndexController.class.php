@@ -17,6 +17,8 @@ class IndexController extends Controller {
   		$this -> error('404 Error!');
   		return;
   	}
+    $morevote = $Vote -> getLastVote();
+    $this -> assign('morevote',$morevote);
   	$this -> display();
   }
   public function niuren(){

@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/datepicker.css" />
 	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/sb-admin.css" />
+	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/font-awesome.css" />
 	<link rel="stylesheet" type="text/css" href="/herald_vote/Public/Css/style-admin.css" />
 </head>
 <body>
@@ -24,7 +25,7 @@
 
 	  <div class="collapse navbar-collapse navbar-ex1-collapse">
 	    <ul class="nav navbar-nav side-nav">
-	      <li class="active"><a href="<?php echo U('Admin/Index/index','userid=213111517');?>"><i class="fa fa-dashboard"></i> 我发起的投票</a></li>
+	      <li><a href="<?php echo U('Admin/Index/index','userid=213111517');?>"><i class="fa fa-dashboard"></i> 我发起的投票</a></li>
 	      <li><a href="<?php echo U('Admin/Index/myjoin','userid=213111517');?>"><i class="fa fa-bar-chart-o"></i> 我参与的投票</a></li>
 	      <li><a href="<?php echo U('Admin/Index/publish','userid=213111517');?>"><i class="fa fa-table"></i> 发布投票</a></li>
 	    </ul>
@@ -88,7 +89,8 @@
 <script type="text/javascript" src="/herald_vote/Public/Js/datepicker.js"></script>
 <script type="text/javascript" src="/herald_vote/Public/Js/fileupload.js"></script>
 <script type="text/javascript" src="/herald_vote/Public/Js/bootstrap.js"></script>
-
+<script type="text/javascript" src="/herald_vote/Public/Js/tablesorter.js"></script>
+<script type="text/javascript" src="/herald_vote/Public/Js/tabls.js"></script>
 
 <script type="text/javascript" src="/herald_vote/Public/Js/herald-vote.js"></script>
 </body>
