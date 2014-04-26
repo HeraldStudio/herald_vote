@@ -194,6 +194,7 @@
 <script type="text/javascript" src="/herald_vote/Public/Js/video.js"></script>
 <script type="text/javascript" src="/herald_vote/Public/Js/rollheader.js"></script>
 <script type="text/javascript" src="/herald_vote/Public/Js/herald-vote-home.js"></script>
+<script type="text/javascript" src="/herald_vote/Public/Js/logout.js"></script>
 <script>
   function init() {
       window.addEventListener('scroll', function(e){

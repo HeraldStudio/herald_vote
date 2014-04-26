@@ -9,7 +9,8 @@ class IndexController extends Controller{
 			return;
 		}
 		$userid = $loginuserinfo[0];
-		$this -> getICreateVote();
+		$this -> getICreateVote($userid);
+		$this -> assign('loginuserinfo',$loginuserinfo);
 		$this -> display();
 	}
 	public function myjoin(){
@@ -19,7 +20,8 @@ class IndexController extends Controller{
 			return;
 		}
 		$userid = $loginuserinfo[0];
-		$this -> getIJoinVote();
+		$this -> getIJoinVote($userid);
+		$this -> assign('loginuserinfo',$loginuserinfo);
 		$this -> display();
 	}
 
@@ -30,6 +32,7 @@ class IndexController extends Controller{
 			return;
 		}
 		$userid = $loginuserinfo[0];
+		$this -> assign('loginuserinfo',$loginuserinfo);
 		$this -> display();
 	}
 
@@ -74,15 +77,15 @@ class IndexController extends Controller{
 		$this -> assign('uservote',$uservote);
 	}
 
-	private function getICreateVote(){
+	private function getICreateVote($userid){
 		$Vote = D('Vote');
-		$IcreateVote = $Vote -> getVoteByUserId();
+		$IcreateVote = $Vote -> getVoteByUserId($userid);
 		$this -> assign('voteinfo',$IcreateVote);
 	}
 
-	private function getIJoinVote(){
+	private function getIJoinVote($userid){
 		$Vote = D('Vote');
-		$IJoinVote = $Vote -> getUserJoinById();
+		$IJoinVote = $Vote -> getUserJoinById($userid);
 		$this -> assign('voteinfo',$IJoinVote);
 	}
 }

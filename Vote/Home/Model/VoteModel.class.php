@@ -43,9 +43,9 @@ class VoteModel extends Model{
 
 	private function getVoteState($expiredtime){
 		if(strtotime($expiredtime) >= strtotime(date("Y-m-d",time()))){
-			return true;
+			return "正在进行";
 		}else{
-			return false;
+			return "已结束";
 		}
 	}
 

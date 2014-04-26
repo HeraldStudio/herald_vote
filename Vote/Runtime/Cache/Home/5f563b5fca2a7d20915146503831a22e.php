@@ -28,8 +28,16 @@
 	<div class="row itemhead">
 		<div class="jumbotron">
 			<?php if(!empty($voteinfo["image"])): ?><img class="vote-post pull-right" src="/herald_vote/Uploads/<?php echo ($voteinfo["image"]); ?>" width="400"><?php endif; ?>
-		  <h1><span class="glyphicon glyphicon-stats"></span>&nbsp;<?php echo ($voteinfo["topic"]); ?></h1>
-		  <br>
+			<div class="vote-info-head">
+			  <h1>
+			  	<span class="glyphicon glyphicon-stats"></span>
+			  	&nbsp;<?php echo ($voteinfo["topic"]); ?>
+			  </h1>
+			  <ol class="breadcrumb">
+				  <li><a href="javascript:void(0);"><span class="glyphicon glyphicon-user"></span>&nbsp;Tairy</a></li>
+				  <li><a href="javascript:void(0);"><span class="glyphicon glyphicon-align-left"></span>&nbsp;<?php echo ($voteinfo["state"]); ?></a></li>
+				</ol>
+			</div>
 		  <p class="vote-description"><?php echo ($voteinfo["description"]); ?></p>
 		</div>
 	</div>
@@ -68,7 +76,7 @@
 						<?php if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="media">
 					      <div class="row">
 					        <div class="media-img col-sm-5 col-md-4 col-lg-4">
-					          <img src="/herald_vote/Uploads/poster.png"></img>
+					          <img src="/herald_vote/Uploads/<?php echo ($vi["attachment"]); ?>"></img>
 					        	<?php if($voteinfo["canvote"] == true): ?><button class="btn btn-primary vote-btn-sub vote-btn-pic" role="button" id="<?php echo ($vi["id"]); ?>">
 						        		<span class="glyphicon glyphicon-thumbs-up"></span>
 						        		&nbsp;顶起
@@ -149,6 +157,7 @@
 <script type="text/javascript" src="/herald_vote/Public/Js/video.js"></script>
 <script type="text/javascript" src="/herald_vote/Public/Js/rollheader.js"></script>
 <script type="text/javascript" src="/herald_vote/Public/Js/herald-vote-home.js"></script>
+<script type="text/javascript" src="/herald_vote/Public/Js/logout.js"></script>
 <script>
   function init() {
       window.addEventListener('scroll', function(e){

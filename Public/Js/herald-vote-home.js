@@ -29,16 +29,6 @@ jQuery(document).ready(function($) {
 		values[0] = $(this).attr('id');
 		ajax(voteid,values,displaytype);
 	});
-	$('.logout').click(function() {
-		$.ajax({
-			url: '/herald_vote/index.php/Home/Index/logout',
-			type: 'post',
-			dataType: 'text',
-			success: function(a){
-				history.go(0);
-			}
-		});
-	});
 });
 
 function ajax(voteid, values, displaytype){
