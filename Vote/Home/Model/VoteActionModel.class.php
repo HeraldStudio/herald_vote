@@ -99,9 +99,4 @@ class VoteActionModel extends Model{
 			return true;
 		}
 	}
-
-	// private function getUserVoteNum(){
-	// 	$userid = '213111517';
-	// 	return $uservotenum = 
-	// }
 }

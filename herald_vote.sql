@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.13
+-- version 4.1.0-alpha2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Apr 26, 2014 at 10:09 AM
--- Server version: 5.5.35-0ubuntu0.12.04.2
--- PHP Version: 5.3.10-1ubuntu3.11
+-- Host: 121.248.63.106
+-- Generation Time: Apr 26, 2014 at 02:31 AM
+-- Server version: 5.5.12-log
+-- PHP Version: 5.4.9-4ubuntu2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -57,8 +57,16 @@ CREATE TABLE IF NOT EXISTS `vote_action` (
   `user_id` varchar(255) NOT NULL,
   `vote_id` int(11) NOT NULL,
   `vote_time` datetime NOT NULL,
+  `vote_item_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `vote_action`
+--
+
+INSERT INTO `vote_action` (`id`, `user_id`, `vote_id`, `vote_time`, `vote_item_id`) VALUES
+(2, '213111517', 1, '0000-00-00 00:00:00', 4);
 
 -- --------------------------------------------------------
 

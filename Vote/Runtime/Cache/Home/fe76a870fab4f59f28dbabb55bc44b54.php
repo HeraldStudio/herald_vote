@@ -17,8 +17,10 @@
         <nav>
             <a href="/">首页</a>
             <a href="">关于</a>
-            <a href="">投票</a>
-            <a href="">登录</a>
+            <?php if($loginuserinfo == false): ?><a href="http://herald.seu.edu.cn/useraccount/login.html">登录</a>
+            <?php else: ?>
+                <a><?php echo ($loginuserinfo[1]); ?></a>
+                <a href="javascript:void(0)" class="logout">登出</a><?php endif; ?>
         </nav>
     </div>
 	</header>

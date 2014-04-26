@@ -17,8 +17,10 @@
         <nav>
             <a href="/">首页</a>
             <a href="">关于</a>
-            <a href="">投票</a>
-            <a href="">登录</a>
+            <?php if($loginuserinfo == false): ?><a href="http://herald.seu.edu.cn/useraccount/login.html">登录</a>
+            <?php else: ?>
+                <a><?php echo ($loginuserinfo[1]); ?></a>
+                <a href="javascript:void(0)" class="logout">登出</a><?php endif; ?>
         </nav>
     </div>
 	</header>
@@ -135,22 +137,7 @@
 	  	</div>
 	  </div>
 	</div>
-	<hr>
-	<div class="row vote-comment">
-		<div id="disqus_thread"></div>
-	</div>
 </div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'heraldvote'; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
 <footer>
 	<center>
 		<p>&copy; 2001-2014 <a href="http://herald.seu.edu.cn">herald.seu.edu.cn</a> All rights reserved.</p>
