@@ -3,30 +3,33 @@ namespace Admin\Controller;
 use Think\Controller;
 class IndexController extends Controller{
 	public function index(){
-		$userid = I('get.userid');
-		if(empty($userid)){
+		$loginuserinfo = currentUser();
+		if(!$loginuserinfo){
 			$this -> error('登录后才可以访问！');
 			return;
 		}
+		$userid = $loginuserinfo[0];
 		$this -> getICreateVote();
 		$this -> display();
 	}
 	public function myjoin(){
-		$userid = I('get.userid');
-		if(empty($userid)){
+		$loginuserinfo = currentUser();
+		if(!$loginuserinfo){
 			$this -> error('登录后才可以访问！');
 			return;
 		}
+		$userid = $loginuserinfo[0];
 		$this -> getIJoinVote();
 		$this -> display();
 	}
 
 	public function publish(){
-		$userid = I('get.userid');
-		if(empty($userid)){
+		$loginuserinfo = currentUser();
+		if(!$loginuserinfo){
 			$this -> error('登录后才可以访问！');
 			return;
 		}
+		$userid = $loginuserinfo[0];
 		$this -> display();
 	}
 
@@ -34,7 +37,6 @@ class IndexController extends Controller{
 		if(IS_POST){
 			$Vote = D('Vote');
 			$Vote -> createVote();
-			// $this -> display('index');
 		}else{
 			$this -> error('502 Bad request!');
 		}
@@ -42,18 +44,18 @@ class IndexController extends Controller{
 
 	public function addVotePost(){
 		$upload = new \Think\Upload();
-    $upload->maxSize = 3145728 ;
-    $upload->autoSub = false;
-    $upload->exts = array('jpg', 'gif', 'png', 'jpeg','mp4');// 设置附件上传类型
-    $upload->savePath = '/';
+	    $upload->maxSize = 3145728 ;
+	    $upload->autoSub = false;
+	    $upload->exts = array('jpg', 'gif', 'png', 'jpeg','mp4');// 设置附件上传类型
+	    $upload->savePath = '/';
 
-    $ret = array(); 
-    $info   =   $upload->uploadOne($_FILES['vote_post']);
-    if(!$info) {
-    		array_push($ret, $upload->getError());
-    }else{
-    }
-    echo $info['savename'];
+	    $ret = array(); 
+	    $info   =   $upload->uploadOne($_FILES['vote_post']);
+	    if(!$info) {
+	    		array_push($ret, $upload->getError());
+	    }else{
+	    }
+	    echo $info['savename'];
 	}
 
 	public function deleteVote(){

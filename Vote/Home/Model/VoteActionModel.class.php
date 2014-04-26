@@ -22,7 +22,8 @@ class VoteActionModel extends Model{
 	}
 
 	private function canvote($voteid,$votingitmecount){
-		$votedcount = $this -> getVotedCount('213111517',$voteid);
+		$currentuserinfo = currentUser();
+		$votedcount = $this -> getVotedCount($currentuserinfo[0],$voteid);
 		$Vote = D('Vote');
 		$limit = $Vote -> getVoteLimitById($voteid);
 		if($votedcount + $votingitmecount > $limit){
@@ -69,18 +70,15 @@ class VoteActionModel extends Model{
 
 	public function canUserVote($userid,$voteid,$limit){
 		$uservotenum = $this -> where('user_id='.$userid.' AND vote_id='.$voteid) -> count();
+		$currentuserinfo = currentUser();
+		if(!$currentuserinfo){
+			return false;
+		}
 		if($uservotenum < $limit){
 			return true;
 		}
 		return false;
 	}
-
-	// private function isDataValidity(){
-	// 	if(empty($this -> voteid) || empty($this -> voteiteminfos)){
-	// 		return false;
-	// 	}
-	// 	return true;
-	// }
 
 	private function isVoteInLimit($voteiteminfos,$limit){
 		if(count($voteiteminfos) + $this -> getUserVoteNum() > $limit){
@@ -90,8 +88,9 @@ class VoteActionModel extends Model{
 	}
 
 	private function addData($voteid,$voteiteminfos){
+		$currentuserinfo = currentUser();
 		foreach ($voteiteminfos as $voteiteminfo) {
-			$datalist[] = array('user_id' => '213111517', 'vote_id' => $voteid, 'vote_item_id' => $voteiteminfo);
+			$datalist[] = array('user_id' => $currentuserinfo[0], 'vote_id' => $voteid, 'vote_item_id' => $voteiteminfo);
 		}
 		if(!$this -> create()){
 			return false;

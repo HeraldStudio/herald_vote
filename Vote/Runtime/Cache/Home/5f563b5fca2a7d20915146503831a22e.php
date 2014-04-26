@@ -15,9 +15,10 @@
             投票啦
         </h1>
         <nav>
-            <a href="">首页</a>
+            <a href="/">首页</a>
             <a href="">关于</a>
             <a href="">投票</a>
+            <a href="">登录</a>
         </nav>
     </div>
 	</header>

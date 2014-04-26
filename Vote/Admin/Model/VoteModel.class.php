@@ -16,10 +16,10 @@ class VoteModel extends Model{
 	// );
 
 	public function createVote(){
-		// $currentuser = currentUser();
-		// if($currentuser){
+		$currentuser = currentUser();
+		if($currentuser){
 			$data['topic'] = I('post.topic');
-			$data['user_id'] = '213111517';//$currentuser[0];
+			$data['user_id'] = $currentuser[0];
 			$data['description'] = I('post.description');
 			if( I('post.vote_type') == 1){
 				$data['type'] = I('post.vote_type');
@@ -40,17 +40,21 @@ class VoteModel extends Model{
 					$VoteItem -> createItem($vote_id);
 				}
 			}
-			
-		// }else{
-		// 	echo '未登录!';
-		// }
+		}else{
+			echo '未登录!';
+		}
 	}
 
 	public function deleteVote(){
-		$voteid = I('post.vote_id');
-		$this->where('id='.$voteid)->limit('1')->delete();
-		$VoteItem = D('VoteItem');
-		$VoteItem -> deleteItem($voteid);
+		$currentuser = currentUser();
+		if($currentuser){
+			$voteid = I('post.vote_id');
+			$this->where('id='.$voteid)->limit('1')->delete();
+			$VoteItem = D('VoteItem');
+			$VoteItem -> deleteItem($voteid);
+		}else{
+			echo '未登录!';
+		}
 	}
 
 	public function getVoteByUserId(){

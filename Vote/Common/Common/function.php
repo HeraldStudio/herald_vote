@@ -1,6 +1,6 @@
 <?php
 function postCookie(){
-	$ch = curl_init();
+  $ch = curl_init();
   $postdata ="cookie=".$_COOKIE['HERALD_USER_SESSION_ID'];
   curl_setopt($ch, CURLOPT_URL, 'http://herald.seu.edu.cn/useraccount/getloginuserinfo.php');
   curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -9,7 +9,7 @@ function postCookie(){
   curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
   $responseword = curl_exec($ch);
   curl_close($ch);
-	return $responseword;
+  return $responseword;
 }
 
 function currentUser(){
