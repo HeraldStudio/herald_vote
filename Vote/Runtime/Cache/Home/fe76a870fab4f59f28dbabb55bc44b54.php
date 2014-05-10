@@ -185,7 +185,7 @@
 </section>
 <footer>
 	<center>
-		<p>&copy; 2001-2014 <a href="http://herald.seu.edu.cn">herald.seu.edu.cn</a> All rights reserved.</p>
+		<p>&copy; 2001-2014 <a href="http://herald.seu.edu.cn">东南大学先声网</a> All rights reserved.</p>
 	</center>
 </footer>
 

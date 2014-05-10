@@ -9,15 +9,17 @@ jQuery(document).ready(function($) {
 	  	key = index;
 	  });
 	  if(key == -1){
-	  	$('#remes').empty();
-	  	var addhtml = '<div class="alert alert-danger fade in"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>您还未选择！</div>'
-	  	$('#remes').append(addhtml);
+	  	//$('#remes').empty();
+	  	//var addhtml = '<div class="alert alert-danger fade in"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>您还未选择！</div>'
+	  	//$('#remes').append(addhtml);
+	  	alert("您还未选择！");
 	  	return;
 	  }
 	  if(key >= $('#vote_limit').val()){
-	  	$('#remes').empty();
-	  	var addhtml = '<div class="alert alert-danger fade in"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>您的选择超过了投票设定的数目，无法提交数据，请重新选择!</div>'
-	  	$('#remes').append(addhtml);
+	  	// $('#remes').empty();
+	  	// var addhtml = '<div class="alert alert-danger fade in"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>您的选择超过了投票设定的数目，无法提交数据，请重新选择!</div>'
+	  	// $('#remes').append(addhtml);
+	  	alert("您的选择超过了投票设定的数目，无法提交数据，请重新选择!");
 	  	return;
 	  }
 	  ajax(voteid,values,displaytype);
@@ -42,9 +44,10 @@ function ajax(voteid, values, displaytype){
     },
     success: function(data){
     	var result = JSON.parse(data);
-    	var addhtml = '<div class="alert alert-'+result.type+' fade in"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+result.content+'</div>'
-      $('#remes').empty();
-      $('#remes').append(addhtml);
+    	// var addhtml = '<div class="alert alert-'+result.type+' fade in"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+result.content+'</div>'
+      // $('#remes').empty();
+      // $('#remes').append(addhtml);
+      alert(result.content);
       if(displaytype == "text"){
       	textresponse(result);
       }else{

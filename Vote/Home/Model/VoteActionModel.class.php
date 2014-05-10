@@ -68,9 +68,9 @@ class VoteActionModel extends Model{
 		return $lastarray;
 	}
 
-	public function canUserVote($userid,$voteid,$limit){
-		$uservotenum = $this -> where('user_id='.$userid.' AND vote_id='.$voteid) -> count();
+	public function canUserVote($voteid,$limit){
 		$currentuserinfo = currentUser();
+		$uservotenum = $this -> where('user_id='.$currentuserinfo[0].' AND vote_id='.$voteid) -> count();
 		if(!$currentuserinfo){
 			return false;
 		}

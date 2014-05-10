@@ -311,8 +311,8 @@ section.blu p {
 
 .media {
 	background: #fff;
-	border-bottom: solid 1px #c7c9c8;
 	margin-bottom: 30px;
+	margin-top: 0;
 }
 
 .media a {

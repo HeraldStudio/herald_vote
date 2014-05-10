@@ -27,6 +27,9 @@ class IndexController extends Controller {
   public function niuren(){
     $this -> display();
   }
+  public function ayi(){
+    $this -> display();
+  }
   public function vote(){
   	if(IS_POST){
   		$VoteAction = D('VoteAction');

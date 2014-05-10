@@ -34,7 +34,7 @@
 			  	&nbsp;<?php echo ($voteinfo["topic"]); ?>
 			  </h1>
 			  <ol class="breadcrumb">
-				  <li><a href="javascript:void(0);"><span class="glyphicon glyphicon-user"></span>&nbsp;Tairy</a></li>
+				  <!-- <li><a href="javascript:void(0);"><span class="glyphicon glyphicon-user"></span>&nbsp;Tairy</a></li> -->
 				  <li><a href="javascript:void(0);"><span class="glyphicon glyphicon-align-left"></span>&nbsp;<?php echo ($voteinfo["state"]); ?></a></li>
 				</ol>
 			</div>
@@ -42,7 +42,7 @@
 		</div>
 	</div>
 	<div class="row">
-	  <div class="col-md-8">
+	  <div class="col-md-12">
 			<br>
 			<br>
 			<input type="hidden" id="vote_id" value="<?php echo ($voteinfo["id"]); ?>">
@@ -73,50 +73,41 @@
 					<br>
 					<?php if($voteinfo["canvote"] == true): ?><button type="button" class="btn btn-success vote-btn" id="submit_vote">投票</button><?php endif; break;?>
 				<?php case "picture": ?><div class="row">
-						<?php if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="media">
-					      <div class="row">
-					        <div class="media-img col-sm-5 col-md-4 col-lg-4">
-					          <img src="/herald_vote/Uploads/<?php echo ($vi["attachment"]); ?>"></img>
-					        	<?php if($voteinfo["canvote"] == true): ?><button class="btn btn-primary vote-btn-sub vote-btn-pic" role="button" id="<?php echo ($vi["id"]); ?>">
+						<?php if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="media col-md-6">
+				        <div class="media-img col-sm-7 col-md-8 col-lg-8">
+				          <img src="/herald_vote/Uploads/<?php echo ($vi["attachment"]); ?>"></img>
+				        </div>
+				        <div class="media-post col-sm-5 col-md-4 col-lg-4">
+				          <h3 class="animated fadeIn delay03">
+				            <?php echo ($vi["name"]); ?>         
+				        	</h3>
+				        	<hr>  
+				          <div>
+				          	<?php if($voteinfo["canvote"] == true): ?><button class="btn btn-primary vote-btn-sub" role="button" id="<?php echo ($vi["id"]); ?>">
 						        		<span class="glyphicon glyphicon-thumbs-up"></span>
 						        		&nbsp;顶起
 						        	</button>
 						        <?php else: ?>
-						        	<button href="javascript:void(0);" class="btn btn-primary vote-btn-pic" role="button" id="<?php echo ($vi["id"]); ?>" disabled="disabled">
+						        	<button href="javascript:void(0);" class="btn btn-primary" role="button" id="<?php echo ($vi["id"]); ?>" disabled="disabled">
 						        		<span class="glyphicon glyphicon-thumbs-up"></span>
 						        		&nbsp;顶起
 						        	</button><?php endif; ?> 
-				          <span class="glyphicon glyphicon-align-right"></span>
-						      <span class="badge" id="support_num_<?php echo ($vi["id"]); ?>"><?php echo ($vi["supportnum"]); ?></span> 
-					        </div>
-					        <div class="media-post col-sm-7 col-md-8 col-lg-8">
-					          <h3 class="animated fadeIn delay03">
-					            <?php echo ($vi["name"]); ?>         
-					        	</h3>
-					        	<hr>
-					          <h6 class="animated fadeIn delay05">
-					          	<span class="Newsletter">牛人张三</span> 
-					          	<span class="sep">/</span> 
-					          </h6>    
-					          <p><?php echo ($vi["description"]); ?></p>
-					        </div>
-					      </div>
+					          <span class="glyphicon glyphicon-align-right"></span>
+							      <span class="badge" id="support_num_<?php echo ($vi["id"]); ?>"><?php echo ($vi["supportnum"]); ?></span> 
+				          </div>
+				        </div>
 					    </div><?php endforeach; endif; else: echo "" ;endif; ?>
 					</div><?php break;?>
 				<?php case "video": if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="media">
 				      <div class="row">
 				        <div class="media-img col-sm-8 col-md-9 col-lg-9">
-				          <video src="/herald_vote/Uploads/<?php echo ($vi["attachment"]); ?>" poster="/herald_vote/Uploads/poster.png" width="100%" height="100%" controls preload></video>
+				          <video src="/herald_vote/Uploads/<?php echo ($vi["attachment"]); ?>" poster="/herald_vote/Uploads/poster.png" width="100%" height="300px" controls preload></video>
 				        </div>
 				        <div class="media-post col-sm-4 col-md-3 col-lg-3">
 				          <h3 class="animated fadeIn delay03">
 				          	<?php echo ($vi["name"]); ?>
 				        	</h3>
 				        	<hr>
-				          <h6 class="animated fadeIn delay05">
-				          	<span class="Newsletter">牛人张三</span> 
-				          	<span class="sep">/</span> 
-				          </h6> 
 				          <?php if($voteinfo["canvote"] == true): ?><button class="btn btn-primary vote-btn-sub vote-btn-vdo" role="button" id="<?php echo ($vi["id"]); ?>">
 					        		<span class="glyphicon glyphicon-thumbs-up"></span>
 					        		&nbsp;顶起
@@ -133,22 +124,18 @@
 				      </div>
 				    </div><?php endforeach; endif; else: echo "" ;endif; break; endswitch;?>
 	  </div>
-	  <div class="col-md-3">
+	  <!-- <div class="col-md-3">
 	  	<h3>更多精彩投票...</h3>
 	  	<br>
 			<div class="list-group">
 				<?php if(is_array($morevote)): $i = 0; $__LIST__ = $morevote;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$mv): $mod = ($i % 2 );++$i;?><a href="<?php echo U('Home/Index/voteitem',array('voteid' => $mv[id]));?>" class="list-group-item"><?php echo ($mv["topic"]); ?></a><?php endforeach; endif; else: echo "" ;endif; ?>
-	  <!-- 		<a href="" class="list-group-item">投票2</a>
-	  		<a href="" class="list-group-item">投票3</a>
-	  		<a href="" class="list-group-item">投票4</a>
-	  		<a href="" class="list-group-item">投票5</a> -->
 	  	</div>
-	  </div>
+	  </div> -->
 	</div>
 </div>
 <footer>
 	<center>
-		<p>&copy; 2001-2014 <a href="http://herald.seu.edu.cn">herald.seu.edu.cn</a> All rights reserved.</p>
+		<p>&copy; 2001-2014 <a href="http://herald.seu.edu.cn">东南大学先声网</a> All rights reserved.</p>
 	</center>
 </footer>
 

@@ -1,0 +1,118 @@
+<div class="wrap" role="document" id="contenuto">
+        
+<div id="full-width-slider" class="royalSlider rsHor rsFade rsWithBullets pronto" style="height: 647px; width: 100%;">
+	<div class="rsOverflow" style="width: 1264px; height: 647px;">
+		<div class="rsContainer">
+			<div style="z-index:0;" class="rsSlide  rsActiveSlide">
+				<div class="rsContent" style="visibility: visible; opacity: 1; -webkit-transition: opacity 400ms ease-in-out; transition: opacity 400ms ease-in-out;"> 
+					<img class="rsImg rsMainSlideImage" src="/herald_vote/Public/Images/bg-4.jpg">
+			    <div class="container">
+			      <div class="header-titolo">
+			        <div class="icon-logo" aria-hidden="true">
+			        	<img src="/herald_vote/Public/Images/bg-5.jpg" alt="">
+			        </div>
+			        <h1 class="animated fadeInDown">东南大学第一届牛人大赛</h1>
+			        <p class="animated fadeIn">评出你心中的牛人</p>
+			      </div>
+			      <a class="lead-link" href="#port">去投票<br>
+			      <div class="glyphicon glyphicon-chevron-down"></div>
+			      </a> 
+			    </div>
+  			</div>
+			</div>
+		</div>
+	</div>
+	<div class="rsNav rsBullets">
+		<div class="rsNavItem rsBullet rsNavSelected">
+			<span></span>
+		</div>
+	</div>
+</div>
+<section class="grigio">
+  <div class="container" id="port">
+    <div class="media">
+      <div class="row">
+        <div class="media-img col-sm-8 col-md-9 col-lg-9">
+          <video src="/herald_vote/Uploads/test.mp4" poster="/herald_vote/Uploads/poster.png" width="100%" height="100%" controls preload></video>
+        </div>
+        <div class="media-post col-sm-4 col-md-3 col-lg-3">
+          <h3 class="animated fadeIn delay03">
+          	<a href="/portfolio/antico-setificio-fiorentino/" rel="bookmark">
+            	这个牛人真牛            
+          	</a>
+        	</h3>
+        	<hr>
+          <h6 class="animated fadeIn delay05">
+          	<span class="Newsletter">牛人张三</span> 
+          	<span class="sep">/</span> 
+          </h6>
+          <div class="btn-group">
+					  <button type="button" class="btn btn-success">顶他&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span></button>
+					  <button type="button" class="btn btn-warning">踩他&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span></button>
+					</div>
+					<br> 
+					<br>     
+          <p>这是牛人视频的介绍阿介绍这是牛人视频的介绍阿介绍这是牛人视频的介绍阿介绍这是牛人视频的介绍阿介绍这是牛人视频的介绍阿介绍.</p>
+        	<p>介绍不能太长阿不能太长介绍不能太长阿不能太长介绍不能太长阿不能太长介绍不能太长阿不能太长介绍不能太长阿不能太长介绍不能太长阿不能太长</p>
+        	<p>23333333333333333333333333</p>
+        </div>
+      </div>
+    </div>
+    <div class="media">
+      <div class="row">
+        <div class="media-img col-sm-8 col-md-9 col-lg-9">
+          <video src="/herald_vote/Uploads/5349552fcb15a.mp4" poster="/herald_vote/Uploads/poster.png" width="100%" height="100%" controls preload></video>
+        </div>
+        <div class="media-post col-sm-4 col-md-3 col-lg-3">
+          <h3 class="animated fadeIn delay03">
+          	<a href="/portfolio/antico-setificio-fiorentino/" rel="bookmark">
+            	这个牛人真牛            
+          	</a>
+        	</h3>
+        	<hr>
+          <h6 class="animated fadeIn delay05">
+          	<span class="Newsletter">牛人张三</span> 
+          	<span class="sep">/</span> 
+          </h6>
+          <div class="btn-group">
+					  <button type="button" class="btn btn-success">顶他&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span></button>
+					  <button type="button" class="btn btn-warning">踩他&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span></button>
+					</div>
+					<br> 
+					<br>     
+          <p>这是牛人视频的介绍阿介绍这是牛人视频的介绍阿介绍这是牛人视频的介绍阿介绍这是牛人视频的介绍阿介绍这是牛人视频的介绍阿介绍.</p>
+        	<p>介绍不能太长阿不能太长介绍不能太长阿不能太长介绍不能太长阿不能太长介绍不能太长阿不能太长介绍不能太长阿不能太长介绍不能太长阿不能太长</p>
+        	<p>23333333333333333333333333</p>
+        </div>
+      </div>
+    </div>
+    <div class="media">
+      <div class="row">
+        <div class="media-img col-sm-8 col-md-9 col-lg-9">
+          <video src="/herald_vote/Uploads/53495536cf8fd.mp4" poster="/herald_vote/Uploads/poster.png" width="100%" height="100%" controls preload></video>
+        </div>
+        <div class="media-post col-sm-4 col-md-3 col-lg-3">
+          <h3 class="animated fadeIn delay03">
+          	<a href="/portfolio/antico-setificio-fiorentino/" rel="bookmark">
+            	这个牛人真牛            
+          	</a>
+        	</h3>
+        	<hr>
+          <h6 class="animated fadeIn delay05">
+          	<span class="Newsletter">牛人张三</span> 
+          	<span class="sep">/</span> 
+          </h6>
+          <div class="btn-group">
+					  <button type="button" class="btn btn-success">顶他&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span></button>
+					  <button type="button" class="btn btn-warning">踩他&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span></button>
+					</div>
+					<br> 
+					<br>     
+          <p>这是牛人视频的介绍阿介绍这是牛人视频的介绍阿介绍这是牛人视频的介绍阿介绍这是牛人视频的介绍阿介绍这是牛人视频的介绍阿介绍.</p>
+        	<p>介绍不能太长阿不能太长介绍不能太长阿不能太长介绍不能太长阿不能太长介绍不能太长阿不能太长介绍不能太长阿不能太长介绍不能太长阿不能太长</p>
+        	<p>23333333333333333333333333</p>
+        </div>
+      </div>
+    </div>
+	</section>
+</div>
