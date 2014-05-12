@@ -1,5 +1,5 @@
 body{
-	/*background: #efeee4;*/
+	font-family: "微软雅黑";
 }
 footer{
 	padding: 40px;
@@ -18,6 +18,8 @@ footer{
 }
 .vote-topic{
 	color: #3c763d;
+	/*margin-left: 40px;*/
+	/*margin-bottom: 50px;*/
 }
 .vote-post{
 	border: 1px solid #ddd; 

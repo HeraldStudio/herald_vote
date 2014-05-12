@@ -3,12 +3,17 @@ namespace Admin\Model;
 use Think\Model;
 class VoteModel extends Model{
 	protected $_validate = array(
+		// array('user_id','currentUser','未登录!','0','function'),
 		array('topic','require','请填写投票主题!'),
 		array('expired_time','require','请填写过期时间!'),
 		array('type','require','请选择类型!'),
 		array('limit','require','请填写限投票数!'),
 
 	);
+
+	// protected $_auto = array(
+	// 	array('create_time','time',1,'fucntion'),
+	// );
 
 	public function createVote(){
 		$currentuser = currentUser();

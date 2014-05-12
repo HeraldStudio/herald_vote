@@ -40,6 +40,7 @@ class IndexController extends Controller{
 		if(IS_POST){
 			$Vote = D('Vote');
 			$Vote -> createVote();
+			header("Location: http://herald.seu.edu.cn/herald_vote/index.php/admin/index/index.html");
 		}else{
 			$this -> error('502 Bad request!');
 		}

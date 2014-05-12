@@ -24,7 +24,7 @@
           <tbody>
             <volist name="voteinfo" id="vo">
               <tr class="notice" id="vote_info_tr_{$vo.id}">
-                <td>{$vo.topic}</td>
+                <td><a href="http://herald.seu.edu.cn/herald_vote/index.php/home/index/voteitem/voteid/{$vo.id}">{$vo.topic}</a></td>
                 <td>{$vo.limit}</td>
                 <td>{$vo.state}</td>
                 <td><button class="btn btn-danger delete_vote" id="{$vo.id}">删除</button></td>

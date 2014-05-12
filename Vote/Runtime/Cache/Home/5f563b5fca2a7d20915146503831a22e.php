@@ -74,10 +74,10 @@
 					<?php if($voteinfo["canvote"] == true): ?><button type="button" class="btn btn-success vote-btn" id="submit_vote">投票</button><?php endif; break;?>
 				<?php case "picture": ?><div class="row">
 						<?php if(is_array($voteinfo["voteitem"])): $i = 0; $__LIST__ = $voteinfo["voteitem"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vi): $mod = ($i % 2 );++$i;?><div class="media col-md-6">
-				        <div class="media-img col-sm-7 col-md-8 col-lg-8">
+				        <div class="media-img col-sm-6 col-md-7 col-lg-7">
 				          <img src="/herald_vote/Uploads/<?php echo ($vi["attachment"]); ?>"></img>
 				        </div>
-				        <div class="media-post col-sm-5 col-md-4 col-lg-4">
+				        <div class="media-post col-sm-6 col-md-5 col-lg-5">
 				          <h3 class="animated fadeIn delay03">
 				            <?php echo ($vi["name"]); ?>         
 				        	</h3>
@@ -85,12 +85,12 @@
 				          <div>
 				          	<?php if($voteinfo["canvote"] == true): ?><button class="btn btn-primary vote-btn-sub" role="button" id="<?php echo ($vi["id"]); ?>">
 						        		<span class="glyphicon glyphicon-thumbs-up"></span>
-						        		&nbsp;顶起
+						        		&nbsp;投票
 						        	</button>
 						        <?php else: ?>
 						        	<button href="javascript:void(0);" class="btn btn-primary" role="button" id="<?php echo ($vi["id"]); ?>" disabled="disabled">
 						        		<span class="glyphicon glyphicon-thumbs-up"></span>
-						        		&nbsp;顶起
+						        		&nbsp;投票
 						        	</button><?php endif; ?> 
 					          <span class="glyphicon glyphicon-align-right"></span>
 							      <span class="badge" id="support_num_<?php echo ($vi["id"]); ?>"><?php echo ($vi["supportnum"]); ?></span> 
@@ -110,12 +110,12 @@
 				        	<hr>
 				          <?php if($voteinfo["canvote"] == true): ?><button class="btn btn-primary vote-btn-sub vote-btn-vdo" role="button" id="<?php echo ($vi["id"]); ?>">
 					        		<span class="glyphicon glyphicon-thumbs-up"></span>
-					        		&nbsp;顶起
+					        		&nbsp;投票
 					        	</button>
 					        <?php else: ?>
 					        	<button href="javascript:void(0);" class="btn btn-primary vote-btn-vdo" role="button" id="<?php echo ($vi["id"]); ?>" disabled="disabled">
 					        		<span class="glyphicon glyphicon-thumbs-up"></span>
-					        		&nbsp;顶起
+					        		&nbsp;投票
 					        	</button><?php endif; ?> 
 				          <span class="glyphicon glyphicon-align-right"></span>
 						      <span class="badge" id="support_num_<?php echo ($vi["id"]); ?>"><?php echo ($vi["supportnum"]); ?></span> 

@@ -25,17 +25,17 @@
 
 	  <div class="collapse navbar-collapse navbar-ex1-collapse">
 	    <ul class="nav navbar-nav side-nav">
-	      <li><a href="<?php echo U('Admin/Index/index','userid=213111517');?>"><i class="fa fa-dashboard"></i> 我发起的投票</a></li>
-	      <li><a href="<?php echo U('Admin/Index/myjoin','userid=213111517');?>"><i class="fa fa-bar-chart-o"></i> 我参与的投票</a></li>
-	      <li><a href="<?php echo U('Admin/Index/publish','userid=213111517');?>"><i class="fa fa-table"></i> 发布投票</a></li>
+	      <li><a href="<?php echo U('Admin/Index/index');?>"><i class="fa fa-dashboard"></i> 我发起的投票</a></li>
+	      <li><a href="<?php echo U('Admin/Index/myjoin');?>"><i class="fa fa-bar-chart-o"></i> 我参与的投票</a></li>
+	      <li><a href="<?php echo U('Admin/Index/publish');?>"><i class="fa fa-table"></i> 发布投票</a></li>
 	    </ul>
 
 	    <ul class="nav navbar-nav navbar-right navbar-user">
 	      <li class="dropdown user-dropdown">
-	        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>郭耿瑞<b class="caret"></b></a>
-	        <ul class="dropdown-menu">
-	          <li><a href="#"><i class="fa fa-power-off"></i> 登出</a></li>
-	        </ul>
+	      	<?php if($loginuserinfo == true): ?><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;<?php echo ($loginuserinfo[1]); ?><b class="caret"></b></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="javascript:void(0);" class="logout"><i class="fa fa-power-off"></i>&nbsp;登出</a></li>
+		        </ul><?php endif; ?>
 	      </li>
 	    </ul>
 	  </div>
@@ -65,7 +65,7 @@
           </thead>
           <tbody>
             <?php if(is_array($voteinfo)): $i = 0; $__LIST__ = $voteinfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr class="notice" id="vote_info_tr_<?php echo ($vo["id"]); ?>">
-                <td><?php echo ($vo["topic"]); ?></td>
+                <td><a href="http://herald.seu.edu.cn/herald_vote/index.php/home/index/voteitem/voteid/<?php echo ($vo["id"]); ?>"><?php echo ($vo["topic"]); ?></a></td>
                 <td><?php echo ($vo["limit"]); ?></td>
                 <td><?php echo ($vo["state"]); ?></td>
                 <td><button class="btn btn-danger delete_vote" id="<?php echo ($vo["id"]); ?>">删除</button></td>
@@ -91,6 +91,7 @@
 <script type="text/javascript" src="/herald_vote/Public/Js/bootstrap.js"></script>
 <script type="text/javascript" src="/herald_vote/Public/Js/tablesorter.js"></script>
 <script type="text/javascript" src="/herald_vote/Public/Js/tabls.js"></script>
+<script type="text/javascript" src="/herald_vote/Public/Js/logout.js"></script>
 
 <script type="text/javascript" src="/herald_vote/Public/Js/herald-vote.js"></script>
 </body>

@@ -8,10 +8,10 @@ return array(
 
 	//Database config
 	'DB_TYPE' => 'mysql',
-  'DB_HOST' => 'localhost',
+  'DB_HOST' => '121.248.63.106',
   'DB_NAME' => 'herald_vote',
-  'DB_USER' => 'root',
-  'DB_PWD' => '123456',
+  'DB_USER' => 'vote',
+  'DB_PWD' => 'vote_password',
   'DB_PORT' => 3306,
 
   //Layout config

@@ -10,7 +10,7 @@ class VoteModel extends Model{
 			$voteinfo['state'] = $this -> getVoteState($voteinfo['expired_time']);
 			$voteinfo['displaytype'] = $this -> getVoteDisplayType($voteinfo['voteitem']);
 			$voteinfo['joinnum'] = $this -> getJoinNum($voteinfo['id']);
-			$voteinfo['canvote'] = $this -> canuservote($voteinfo['id'],$voteinfo['limit'],$voteinfo['expired_time']);
+			$voteinfo['canvote'] = $this -> canuservote($voteinfo['id'],$voteinfo['limit']);
 			return $voteinfo;
 		}
 		return false;
@@ -49,12 +49,9 @@ class VoteModel extends Model{
 		}
 	}
 
-	private function canuservote($voteid,$limit,$expiredtime){
-		if(strtotime($expiredtime) < strtotime(date("Y-m-d",time()))){
-			return false;
-		}
+	private function canuservote($voteid,$limit){
 		$VoteAction = D('VoteAction');
-		return $VoteAction -> canUserVote($voteid,$limit);
+		return $VoteAction -> canUserVote('213111517',$voteid,$limit);
 	}
 
 	private function getVoteDisplayType($voteitem){
